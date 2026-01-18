@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluciones MásMóvil - Teleperformance Colombia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables y reset */
+        :root {
+            --primary-color: #e20074; /* Color MásMóvil */
+            --secondary-color: #0054a6;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header y navegación */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.9;
+        }
+
+        /* Contenido principal */
+        main {
+            padding: 2rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .hero h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .category-header i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-header h3 {
+            font-size: 1.5rem;
+        }
+
+        .category-content {
+            padding: 1.5rem;
+        }
+
+        .category-content p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-game {
+            display: block;
+            width: 200px;
+            margin: 3rem auto;
+            text-align: center;
+            font-size: 1.2rem;
+            padding: 1rem;
+            background: linear-gradient(to right, #ff9800, #ff5722);
+        }
+
+        .btn-game:hover {
+            background: linear-gradient(to right, #ff5722, #ff9800);
+        }
+
+        /* Modales */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2% auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .problem-list {
+            list-style: none;
+        }
+
+        .problem-list li {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-left: 4px solid var(--primary-color);
+            background-color: #f8f9fa;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .problem-list li:hover {
+            background-color: #e9ecef;
+        }
+
+        .problem-list h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .problem-list h4 i {
+            font-size: 0.9rem;
+        }
+
+        /* Estilos para el juego */
+        .game-container {
+            text-align: center;
+        }
+
+        .game-category {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .game-category-btn {
+            background-color: #e9ecef;
+            color: var(--dark-color);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            min-width: 150px;
+        }
+
+        .game-category-btn:hover {
+            background-color: #dee2e6;
+        }
+
+        .game-category-btn.active {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .question-container {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+
+        .question-container h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option {
+            background-color: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            border: 2px solid #dee2e6;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .option:hover {
+            border-color: var(--primary-color);
+            background-color: #f8f9fa;
+        }
+
+        .option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(226, 0, 116, 0.1);
+        }
+
+        .option.correct {
+            border-color: var(--success-color);
+            background-color: rgba(40, 167, 69, 0.1);
+        }
+
+        .option.incorrect {
+            border-color: var(--danger-color);
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+
+        .game-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+
+        .results-container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .results-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary-color) 0% 0%, #e9ecef 0% 100%);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .score-value {
+            position: relative;
+            z-index: 1;
+        }
+
+        .results-details {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-satellite-dish"></i>
+                    <span>MásMóvil Soluciones</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#categories">Soluciones</a></li>
+                        <li><a href="#game">Juego</a></li>
+                        <li><a href="#about">Acerca de</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <section class="hero" id="home">
+            <h1>Portal de Solución de Incidentes</h1>
+            <p>Herramienta de apoyo para agentes de Teleperformance Colombia que brindan servicio a MásMóvil. Encuentra guías paso a paso para resolver incidentes de FTTH/WiFi, Móviles y Agile TV.</p>
+            <p>Utiliza las guías interactivas o pon a prueba tus conocimientos con el juego de evaluación.</p>
+        </section>
+
+        <!-- Categorías de solución -->
+        <section id="categories">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--secondary-color);">Categorías de Solución de Incidentes</h2>
+            <div class="categories">
+                <!-- FTTH y WiFi -->
+                <div class="category-card" id="ftth-card">
+                    <div class="category-header">
+                        <i class="fas fa-wifi"></i>
+                        <h3>FTTH y WiFi</h3>
+                    </div>
+                    <div class="category-content">
+                        <p>Soluciones para problemas de fibra óptica, conexión a internet, señal WiFi, configuración de routers y equipos de acceso.</p>
+                        <button class="btn open-modal" data-modal="ftth-modal">Ver Soluciones</button>
+                    </div>
+                </div>
+
+                <!-- Móviles -->
+                <div class="category-card" id="mobile-card">
+                    <div class="category-header">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Móviles</h3>
+                    </div>
+                    <div class="category-content">
+                        <p>Soluciones para problemas de cobertura, llamadas, mensajería, datos móviles, configuración de APN y servicios móviles.</p>
+                        <button class="btn open-modal" data-modal="mobile-modal">Ver Soluciones</button>
+                    </div>
+                </div>
+
+                <!-- Agile TV -->
+                <div class="category-card" id="tv-card">
+                    <div class="category-header">
+                        <i class="fas fa-tv"></i>
+                        <h3>Agile TV</h3>
+                    </div>
+                    <div class="category-content">
+                        <p>Soluciones para problemas de señal de TV, canales, decodificadores, configuración de equipos y servicios de televisión.</p>
+                        <button class="btn open-modal" data-modal="tv-modal">Ver Soluciones</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botón del juego -->
+        <button class="btn btn-game" id="open-game">
+            <i class="fas fa-gamepad"></i> Jugar - Evaluación de Conocimientos
+        </button>
+    </main>
+
+    <!-- Footer -->
+    <footer id="about">
+        <div class="container">
+            <p>Portal de Solución de Incidentes - Teleperformance Colombia para MásMóvil</p>
+            <p>Herramienta de apoyo para agentes | Versión 1.0</p>
+            <p><i class="fas fa-headset"></i> Soporte interno: Ext. 1234</p>
+        </div>
+    </footer>
+
+    <!-- Modal FTTH y WiFi -->
+    <div class="modal" id="ftth-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-wifi"></i> Solución de Incidentes FTTH y WiFi</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Seleccione el tipo de problema:</h3>
+                <ul class="problem-list">
+                    <li data-submodal="ftth-no-internet">
+                        <h4>Cliente sin internet <i class="fas fa-chevron-right"></i></h4>
+                        <p>El cliente reporta falta de conexión a internet</p>
+                    </li>
+                    <li data-submodal="ftth-slow-internet">
+                        <h4>Internet lento <i class="fas fa-chevron-right"></i></h4>
+                        <p>El cliente reporta velocidad de internet por debajo de lo contratado</p>
+                    </li>
+                    <li data-submodal="ftth-wifi-issues">
+                        <h4>Problemas con señal WiFi <i class="chevron-right"></i></h4>
+                        <p>El cliente reporta mala señal WiFi o desconexiones frecuentes</p>
+                    </li>
+                    <li data-submodal="ftth-equipment-issues">
+                        <h4>Problemas con equipo <i class="fas fa-chevron-right"></i></h4>
+                        <p>El cliente reporta problemas con el router, ONT u otro equipo</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Móviles -->
+    <div class="modal" id="mobile-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-mobile-alt"></i> Solución de Incidentes Móviles</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Seleccione el tipo de problema:</h3>
+                <ul class="problem-list">
+                    <li data-submodal="mobile-no-service">
+                        <h4>Sin servicio móvil <i class="fas fa-chevron-right"></i></h4>
+                        <p>El cliente no tiene señal o no puede hacer/recepcionar llamadas</p>
+                    </li>
+                    <li data-submodal="mobile-data-issues">
+                        <h4>Problemas con datos móviles <i class="fas fa-chevron-right"></i></h4>
+                        <p>El cliente no puede navegar por internet desde su móvil</p>
+                    </li>
+                    <li data-submodal="mobile-call-issues">
+                        <h4>Problemas con llamadas <i class="fas fa-chevron-right"></i></h4>
+                        <p>El cliente reporta problemas para realizar o recibir llamadas</p>
+                    </li>
+                    <li data-submodal="mobile-configuration">
+                        <h4>Configuración de servicios <i class="fas fa-chevron-right"></i></h4>
+                        <p>El cliente necesita configurar APN, roaming u otros servicios</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Agile TV -->
+    <div class="modal" id="tv-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-tv"></i> Solución de Incidentes Agile TV</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Seleccione el tipo de problema:</h3>
+                <ul class="problem-list">
+                    <li data-submodal="tv-no-signal">
+                        <h4>Sin señal de TV <i class="fas fa-chevron-right"></i></h4>
+                        <p>El cliente no tiene señal o pantalla en negro</p>
+                    </li>
+                    <li data-submodal="tv-pixelated">
+                        <h4>Señal pixelada o congelada <i class="fas fa-chevron-right"></i></h4>
+                        <p>El cliente reporta imagen pixelada o que se congela</p>
+                    </li>
+                    <li data-submodal="tv-channels-issues">
+                        <h4>Problemas con canales <i class="fas fa-chevron-right"></i></h4>
+                        <p>El cliente no ve ciertos canales o tienen problemas de audio</p>
+                    </li>
+                    <li data-submodal="tv-equipment-issues">
+                        <h4>Problemas con decodificador <i class="fas fa-chevron-right"></i></h4>
+                        <p>El cliente reporta problemas con el decodificador o control remoto</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal del juego -->
+    <div class="modal" id="game-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-gamepad"></i> Juego - Evaluación de Conocimientos</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="game-container">
+                    <div id="game-category-selection">
+                        <h3>Seleccione una categoría para evaluar:</h3>
+                        <div class="game-category">
+                            <div class="game-category-btn" data-game-category="ftth">
+                                <i class="fas fa-wifi"></i> FTTH y WiFi
+                            </div>
+                            <div class="game-category-btn" data-game-category="mobile">
+                                <i class="fas fa-mobile-alt"></i> Móviles
+                            </div>
+                            <div class="game-category-btn" data-game-category="tv">
+                                <i class="fas fa-tv"></i> Agile TV
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="game-questions" style="display: none;">
+                        <div class="question-container">
+                            <h3 id="question-text">Pregunta aparecerá aquí</h3>
+                            <div class="options-container" id="options-container">
+                                <!-- Opciones se insertarán aquí -->
+                            </div>
+                            <p id="question-progress">Pregunta 1 de 5</p>
+                        </div>
+                        <div class="game-navigation">
+                            <button class="btn" id="prev-question" disabled>Anterior</button>
+                            <button class="btn" id="next-question">Siguiente</button>
+                            <button class="btn" id="submit-game" style="display: none;">Finalizar Evaluación</button>
+                        </div>
+                    </div>
+
+                    <div id="game-results" style="display: none;">
+                        <div class="results-container">
+                            <h2>Resultados de la Evaluación</h2>
+                            <div class="score-circle">
+                                <div class="score-value" id="score-value">0%</div>
+                            </div>
+                            <h3 id="result-message"></h3>
+                            <div class="results-details">
+                                <p><strong>Categoría:</strong> <span id="result-category"></span></p>
+                                <p><strong>Respuestas correctas:</strong> <span id="correct-answers">0</span> de <span id="total-questions">0</span></p>
+                                <p><strong>Tiempo:</strong> <span id="game-time">0</span> segundos</p>
+                                <p id="performance-feedback"></p>
+                            </div>
+                            <button class="btn" id="restart-game">Intentar otra categoría</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submodal para problemas específicos -->
+    <div class="modal" id="submodal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="submodal-title"></h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="submodal-content">
+                <!-- Contenido se cargará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos para las soluciones de problemas
+        const solutionData = {
+            "ftth-no-internet": {
+                title: "Cliente sin internet - Solución paso a paso",
+                steps: [
+                    "Verificar estado del servicio en área del cliente (herramienta de outages).",
+                    "Preguntar al cliente si las luces del router/ONT están encendidas y en qué color.",
+                    "Si todas las luces están apagadas, verificar conexión eléctrica y que el equipo esté encendido.",
+                    "Si luz de POWER está encendida pero la de PON/GPON está apagada o parpadeando, verificar conexión de fibra óptica.",
+                    "Si luz de INTERNET/LAN está apagada, reiniciar router (apagar 30 segundos, encender).",
+                    "Pedir al cliente que verifique conexión por cable (Ethernet) para descartar problema WiFi.",
+                    "Si persiste, realizar test de señal desde herramienta interna y si hay atenuación alta, programar visita técnica."
+                ]
+            },
+            "ftth-slow-internet": {
+                title: "Internet lento - Solución paso a paso",
+                steps: [
+                    "Pedir al cliente que realice test de velocidad en speedtest.masmovil.es desde un dispositivo conectado por cable Ethernet.",
+                    "Verificar que el resultado esté dentro del 80% de la velocidad contratada.",
+                    "Si la velocidad es baja por cable, revisar atenuación de señal en herramienta interna.",
+                    "Si la velocidad es buena por cable pero mala por WiFi, revisar ubicación del router, interferencias y canales WiFi.",
+                    "Recomendar al cliente conectar dispositivo a banda de 5GHz si está disponible y el dispositivo es compatible.",
+                    "Verificar cantidad de dispositivos conectados y actividad de descargas/streaming.",
+                    "Si persiste, sugerir reinicio de router y cambio de canal WiFi (canales 1, 6 u 11 en 2.4GHz)."
+                ]
+            },
+            "mobile-no-service": {
+                title: "Sin servicio móvil - Solución paso a paso",
+                steps: [
+                    "Verificar cobertura en la zona del cliente mediante herramienta interna.",
+                    "Preguntar si el problema es de llamadas, datos o ambos.",
+                    "Solicitar al cliente que reinicie el dispositivo móvil.",
+                    "Verificar que el dispositivo no esté en modo avión.",
+                    "Comprobar estado de la línea en sistema de gestión (suspendida, bloqueada, etc.).",
+                    "Solicitar al cliente que verifique selección de red manual/automática.",
+                    "Si persiste, realizar refresh de red o reprovisionamiento de servicios desde herramienta interna."
+                ]
+            },
+            "tv-no-signal": {
+                title: "Sin señal de TV - Solución paso a paso",
+                steps: [
+                    "Preguntar al cliente si el problema es en todos los canales o solo algunos.",
+                    "Verificar que el decodificador esté encendido (luz LED encendida).",
+                    "Solicitar reinicio del decodificador (desconectar de la corriente 30 segundos).",
+                    "Verificar conexiones de cables (HDMI, alimentación, fibra/coaxial).",
+                    "Comprobar que el televisor esté en el canal/entrada correcta (HDMI 1, HDMI 2, etc.).",
+                    "Verificar estado del servicio de TV en la zona mediante herramienta interna.",
+                    "Si persiste, reprogramar canales o realizar reset de fábrica controlado (con backup de grabaciones)."
+                ]
+            }
+        };
+
+        // Datos para el juego (preguntas y respuestas)
+        const gameData = {
+            ftth: {
+                category: "FTTH y WiFi",
+                questions: [
+                    {
+                        question: "Un cliente llama reportando que no tiene internet. Al revisar en el sistema, ves que hay un outage reportado en su zona. ¿Qué debes hacer?",
+                        options: [
+                            "Decirle que reinicie el router y llame de nuevo",
+                            "Informarle del outage, dar tiempo estimado de solución y ofrecer seguimiento",
+                            "Programar una visita técnica inmediata",
+                            "Sugerirle que cambie de operador"
+                        ],
+                        correct: 1,
+                        explanation: "Cuando hay un outage reportado, se debe informar al cliente, proporcionar tiempo estimado de solución y ofrecer seguimiento."
+                    },
+                    {
+                        question: "Un cliente reporta que la luz PON de su ONT está parpadeando en rojo. ¿Qué indica esto?",
+                        options: [
+                            "Que el equipo está funcionando correctamente",
+                            "Que hay problemas con la señal de fibra óptica",
+                            "Que el WiFi está desactivado",
+                            "Que necesita actualizar el firmware"
+                        ],
+                        correct: 1,
+                        explanation: "Luz PON/GPON parpadeando en rojo indica problemas con la señal de fibra óptica (corte, atenuación alta, etc.)."
+                    },
+                    {
+                        question: "Un cliente tiene velocidad baja por WiFi pero normal por cable Ethernet. ¿Cuál es la causa más probable?",
+                        options: [
+                            "Problema en la central telefónica",
+                            "Router defectuoso que necesita reemplazo",
+                            "Interferencias o mala ubicación del router",
+                            "Límite de datos excedido"
+                        ],
+                        correct: 2,
+                        explanation: "Cuando la velocidad es buena por cable pero mala por WiFi, generalmente se debe a interferencias, distancia del router o obstáculos."
+                    },
+                    {
+                        question: "¿Qué canales WiFi en la banda de 2.4GHz tienen menos interferencias?",
+                        options: [
+                            "Canales 3, 7 y 10",
+                            "Canales 1, 6 y 11",
+                            "Canales 2, 5 y 9",
+                            "Todos los canales son iguales"
+                        ],
+                        correct: 1,
+                        explanation: "Los canales 1, 6 y 11 en la banda de 2.4GHz no se superponen, por lo que tienen menos interferencias entre sí."
+                    },
+                    {
+                        question: "Un cliente no puede acceder a una página web específica pero otras funcionan. ¿Qué acción recomiendas primero?",
+                        options: [
+                            "Reset de fábrica del router",
+                            "Cambiar los DNS a 8.8.8.8 y 8.8.4.4",
+                            "Programar visita técnica",
+                            "Verificar que la página no esté bloqueada por control parental"
+                        ],
+                        correct: 1,
+                        explanation: "Cambiar los DNS a los de Google (8.8.8.8 y 8.8.4.4) puede resolver problemas de acceso a sitios específicos si hay problemas con los DNS del operador."
+                    }
+                ]
+            },
+            mobile: {
+                category: "Móviles",
+                questions: [
+                    {
+                        question: "Un cliente no puede hacer llamadas pero sí navegar por internet. ¿Qué podría estar fallando?",
+                        options: [
+                            "Problema con los servidores DNS",
+                            "Configuración incorrecta de APN",
+                            "Problema en la red de voz (circuit-switched)",
+                            "El dispositivo no es compatible con 4G"
+                        ],
+                        correct: 2,
+                        explanation: "Si los datos funcionan pero las llamadas no, generalmente es problema en la red de voz (circuit-switched), no en la de datos (packet-switched)."
+                    },
+                    {
+                        question: "¿Qué debe hacer un cliente si no tiene señal pero otras personas en la misma zona sí tienen?",
+                        options: [
+                            "Cambiar inmediatamente de operador",
+                            "Reiniciar el dispositivo y verificar modo avión",
+                            "Comprar un nuevo teléfono",
+                            "Llamar a la policía"
+                        ],
+                        correct: 1,
+                        explanation: "Primero debe reiniciar el dispositivo y verificar que no esté en modo avión, luego verificar configuración de red."
+                    },
+                    {
+                        question: "Un cliente viajó al extranjero y no tiene servicio. ¿Qué verificar primero?",
+                        options: [
+                            "Si tiene saldo negativo",
+                            "Si el roaming está activado en su línea",
+                            "Si el dispositivo tiene chip",
+                            "Si contrató un plan internacional"
+                        ],
+                        correct: 1,
+                        explanation: "Primero verificar si el roaming está activado en la línea, ya que por defecto puede estar desactivado por seguridad."
+                    },
+                    {
+                        question: "¿Cuál es el APN correcto para datos móviles en MásMóvil?",
+                        options: [
+                            "internet.masmovil.es",
+                            "movistar.es",
+                            "vodafone.es",
+                            "orange.es"
+                        ],
+                        correct: 0,
+                        explanation: "El APN correcto para MásMóvil es internet.masmovil.es"
+                    },
+                    {
+                        question: "Un cliente reporta que no puede enviar MMS pero sí navegar. ¿Qué configuración verificar?",
+                        options: [
+                            "Configuración de APN para MMS",
+                            "Espacio de almacenamiento del dispositivo",
+                            "Configuración de correo electrónico",
+                            "Aplicación de mensajería instalada"
+                        ],
+                        correct: 0,
+                        explanation: "Los MMS requieren configuración específica de APN (generalmente mms.masmovil.es) diferente al APN de datos."
+                    }
+                ]
+            },
+            tv: {
+                category: "Agile TV",
+                questions: [
+                    {
+                        question: "Un cliente tiene pantalla negra en todos los canales. ¿Qué acción recomiendas primero?",
+                        options: [
+                            "Reiniciar el decodificador",
+                            "Cambiar el televisor",
+                            "Actualizar el firmware",
+                            "Recontratar el servicio"
+                        ],
+                        correct: 0,
+                        explanation: "El primer paso siempre debe ser reiniciar el decodificador (desconectar de la corriente 30 segundos)."
+                    },
+                    {
+                        question: "¿Qué indica una luz roja fija en el decodificador?",
+                        options: [
+                            "Está actualizando software",
+                            "No tiene señal o hay problema de comunicación",
+                            "Está grabando un programa",
+                            "El control remoto no tiene baterías"
+                        ],
+                        correct: 1,
+                        explanation: "Luz roja fija generalmente indica falta de señal o problema de comunicación con la red."
+                    },
+                    {
+                        question: "Un cliente solo tiene problemas con canales HD. ¿Qué podría ser?",
+                        options: [
+                            "Problema con la resolución configurada",
+                            "El televisor no es compatible con HD",
+                            "Necesita contrato especial para HD",
+                            "Problema con el cable HDMI"
+                        ],
+                        correct: 3,
+                        explanation: "Si solo fallan canales HD, podría ser problema con el cable HDMI que no soporta la resolución o ancho de banda necesario."
+                    },
+                    {
+                        question: "¿Cómo se resuelve problema de audio y video desincronizados?",
+                        options: [
+                            "Reiniciar el decodificador",
+                            "Ajustar delay de audio en configuración",
+                            "Cambiar el cable de audio",
+                            "Reset de fábrica"
+                        ],
+                        correct: 0,
+                        explanation: "Generalmente un reinicio del decodificador resuelve problemas de desincronización de audio y video."
+                    },
+                    {
+                        question: "Un cliente no puede acceder a aplicaciones de streaming desde el decodificador. ¿Qué verificar?",
+                        options: [
+                            "Conexión a internet del decodificador",
+                            "Contraseña de Netflix/Amazon",
+                            "Memoria interna del decodificador",
+                            "Versión del sistema operativo"
+                        ],
+                        correct: 0,
+                        explanation: "Primero verificar que el decodificador tenga conexión a internet, ya que las aplicaciones de streaming requieren conexión activa."
+                    }
+                ]
+            }
+        };
+
+        // Variables globales para el juego
+        let currentGameCategory = null;
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let gameStartTime = null;
+        let gameTimer = null;
+
+        // Funcionalidad para abrir/cerrar modales
+        document.addEventListener('DOMContentLoaded', function() {
+            // Abrir modales principales
+            const openModalButtons = document.querySelectorAll('.open-modal');
+            const closeModalButtons = document.querySelectorAll('.close-modal');
+            const modals = document.querySelectorAll('.modal');
+
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.getAttribute('data-modal');
+                    document.getElementById(modalId).style.display = 'block';
+                });
+            });
+
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    modal.style.display = 'none';
+                });
+            });
+
+            // Cerrar modal haciendo clic fuera del contenido
+            modals.forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+
+            // Abrir el juego
+            document.getElementById('open-game').addEventListener('click', () => {
+                document.getElementById('game-modal').style.display = 'block';
+                resetGame();
+            });
+
+            // Abrir submodales desde lista de problemas
+            const problemItems = document.querySelectorAll('.problem-list li');
+            problemItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const submodalId = item.getAttribute('data-submodal');
+                    if (solutionData[submodalId]) {
+                        openSubmodal(submodalId);
+                    }
+                });
+            });
+
+            // Inicializar funcionalidad del juego
+            initGame();
+        });
+
+        // Función para abrir submodal con contenido específico
+        function openSubmodal(submodalId) {
+            const data = solutionData[submodalId];
+            if (!data) return;
+
+            const submodal = document.getElementById('submodal');
+            document.getElementById('submodal-title').textContent = data.title;
+            
+            const content = document.getElementById('submodal-content');
+            content.innerHTML = `
+                <h3>Pasos para la solución:</h3>
+                <ol style="padding-left: 1.5rem; margin-top: 1rem;">
+                    ${data.steps.map((step, index) => `<li style="margin-bottom: 1rem;">${step}</li>`).join('')}
+                </ol>
+                <div style="margin-top: 2rem; padding: 1rem; background-color: #e9ecef; border-radius: var(--border-radius);">
+                    <h4><i class="fas fa-lightbulb"></i> Consejo adicional:</h4>
+                    <p>Recuerda documentar todas las acciones realizadas en el sistema de tickets y ofrecer seguimiento al cliente en caso de requerir visita técnica.</p>
+                </div>
+            `;
+            
+            // Cerrar modal anterior y abrir submodal
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (modal.id !== 'submodal') {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            submodal.style.display = 'block';
+        }
+
+        // Funcionalidad del juego
+        function initGame() {
+            // Selección de categoría del juego
+            const categoryButtons = document.querySelectorAll('.game-category-btn');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    currentGameCategory = button.getAttribute('data-game-category');
+                    startGame();
+                });
+            });
+
+            // Navegación entre preguntas
+            document.getElementById('prev-question').addEventListener('click', prevQuestion);
+            document.getElementById('next-question').addEventListener('click', nextQuestion);
+            document.getElementById('submit-game').addEventListener('click', finishGame);
+            document.getElementById('restart-game').addEventListener('click', resetGame);
+        }
+
+        function startGame() {
+            if (!currentGameCategory || !gameData[currentGameCategory]) return;
+
+            // Ocultar selección de categoría, mostrar preguntas
+            document.getElementById('game-category-selection').style.display = 'none';
+            document.getElementById('game-questions').style.display = 'block';
+            document.getElementById('game-results').style.display = 'none';
+
+            // Reiniciar variables del juego
+            currentQuestionIndex = 0;
+            userAnswers = new Array(gameData[currentGameCategory].questions.length).fill(null);
+            gameStartTime = Date.now();
+
+            // Cargar primera pregunta
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            if (!currentGameCategory) return;
+
+            const questions = gameData[currentGameCategory].questions;
+            const question = questions[currentQuestionIndex];
+
+            // Actualizar texto de pregunta
+            document.getElementById('question-text').textContent = question.question;
+            document.getElementById('question-progress').textContent = `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`;
+
+            // Actualizar opciones
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionElement.classList.add('selected');
+                }
+                optionElement.textContent = `${String.fromCharCode(65 + index)}) ${option}`;
+                optionElement.dataset.index = index;
+
+                optionElement.addEventListener('click', () => {
+                    // Deseleccionar todas las opciones
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+
+                    // Seleccionar esta opción
+                    optionElement.classList.add('selected');
+                    userAnswers[currentQuestionIndex] = index;
+
+                    // Habilitar botón siguiente si hay respuesta seleccionada
+                    document.getElementById('next-question').disabled = false;
+                });
+
+                optionsContainer.appendChild(optionElement);
+            });
+
+            // Actualizar estado de botones de navegación
+            document.getElementById('prev-question').disabled = currentQuestionIndex === 0;
+            
+            const isLastQuestion = currentQuestionIndex === questions.length - 1;
+            document.getElementById('next-question').style.display = isLastQuestion ? 'none' : 'block';
+            document.getElementById('submit-game').style.display = isLastQuestion ? 'block' : 'none';
+            document.getElementById('next-question').disabled = userAnswers[currentQuestionIndex] === null;
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < gameData[currentGameCategory].questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function finishGame() {
+            if (!currentGameCategory) return;
+
+            const questions = gameData[currentGameCategory].questions;
+            let correctCount = 0;
+
+            // Calificar respuestas
+            for (let i = 0; i < questions.length; i++) {
+                if (userAnswers[i] === questions[i].correct) {
+                    correctCount++;
+                }
+            }
+
+            // Calcular puntaje
+            const score = Math.round((correctCount / questions.length) * 100);
+            const gameTime = Math.floor((Date.now() - gameStartTime) / 1000);
+
+            // Mostrar resultados
+            document.getElementById('game-questions').style.display = 'none';
+            document.getElementById('game-results').style.display = 'block';
+
+            document.getElementById('score-value').textContent = `${score}%`;
+            document.getElementById('result-category').textContent = gameData[currentGameCategory].category;
+            document.getElementById('correct-answers').textContent = correctCount;
+            document.getElementById('total-questions').textContent = questions.length;
+            document.getElementById('game-time').textContent = gameTime;
+
+            // Animar círculo de puntaje
+            const scoreCircle = document.querySelector('.score-circle');
+            scoreCircle.style.background = `conic-gradient(var(--primary-color) 0% ${score}%, #e9ecef ${score}% 100%)`;
+
+            // Mensaje según puntaje
+            let message = "";
+            let feedback = "";
+            
+            if (score >= 90) {
+                message = "¡Excelente! Dominas completamente esta categoría.";
+                feedback = "Tu conocimiento es excepcional. Puedes manejar cualquier caso complejo que se presente.";
+            } else if (score >= 70) {
+                message = "¡Muy bien! Tienes buen conocimiento del área.";
+                feedback = "Puedes resolver la mayoría de casos, pero revisa los temas donde tuviste errores.";
+            } else if (score >= 60) {
+                message = "Aprobado. Conocimiento suficiente para casos básicos.";
+                feedback = "Te recomendamos repasar los temas donde fallaste para mejorar tu desempeño.";
+            } else {
+                message = "Necesitas reforzar tus conocimientos.";
+                feedback = "Revisa las guías de solución y realiza más prácticas antes de atender casos reales.";
+            }
+
+            document.getElementById('result-message').textContent = message;
+            document.getElementById('performance-feedback').textContent = feedback;
+        }
+
+        function resetGame() {
+            // Mostrar selección de categoría, ocultar demás secciones
+            document.getElementById('game-category-selection').style.display = 'block';
+            document.getElementById('game-questions').style.display = 'none';
+            document.getElementById('game-results').style.display = 'none';
+
+            // Resetear selección de categoría
+            document.querySelectorAll('.game-category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            currentGameCategory = null;
+            currentQuestionIndex = 0;
+            userAnswers = [];
+        }
+    </script>
+</body>
+</html>
