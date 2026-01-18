@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soluciones MásMóvil - Teleperformance Colombia</title>
+    <title>Portal de Soluciones MásMóvil - Teleperformance Colombia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Variables y reset */
@@ -17,6 +17,7 @@
             --danger-color: #dc3545;
             --border-radius: 8px;
             --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --tool-color: #17a2b8;
         }
 
         * {
@@ -79,10 +80,12 @@
             text-decoration: none;
             font-weight: 500;
             transition: opacity 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
         }
 
-        nav a:hover {
-            opacity: 0.9;
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         /* Contenido principal */
@@ -174,6 +177,14 @@
             background-color: var(--secondary-color);
         }
 
+        .btn-tool {
+            background-color: var(--tool-color);
+        }
+
+        .btn-tool:hover {
+            background-color: #138496;
+        }
+
         .btn-game {
             display: block;
             width: 200px;
@@ -205,7 +216,7 @@
             background-color: white;
             margin: 2% auto;
             width: 90%;
-            max-width: 800px;
+            max-width: 1000px;
             border-radius: var(--border-radius);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             animation: modalFade 0.3s;
@@ -242,8 +253,23 @@
 
         .modal-body {
             padding: 2rem;
-            max-height: 70vh;
+            max-height: 80vh;
             overflow-y: auto;
+        }
+
+        /* Estilos para secciones de problemas */
+        .problem-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+
+        .problem-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
         }
 
         .problem-list {
@@ -254,25 +280,107 @@
             margin-bottom: 1rem;
             padding: 1rem;
             border-left: 4px solid var(--primary-color);
-            background-color: #f8f9fa;
+            background-color: white;
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
             cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .problem-list li:hover {
-            background-color: #e9ecef;
-        }
-
-        .problem-list h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            transition: all 0.2s;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .problem-list h4 i {
+        .problem-list li:hover {
+            background-color: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .problem-list h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-list p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .problem-list i {
+            color: var(--primary-color);
+        }
+
+        /* Estilos para soluciones detalladas */
+        .solution-steps {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-top: 1.5rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .solution-steps h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .step {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .tool-simulation {
+            background-color: #e7f3ff;
+            border-left: 4px solid var(--tool-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tool-simulation h5 {
+            color: var(--tool-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .image-reference {
+            text-align: center;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+
+        .image-reference img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .image-reference p {
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
             font-size: 0.9rem;
         }
 
@@ -450,14 +558,14 @@
             <div class="header-content">
                 <div class="logo">
                     <i class="fas fa-satellite-dish"></i>
-                    <span>MásMóvil Soluciones</span>
+                    <span>MásMóvil Soluciones - Teleperformance</span>
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#home" class="active">Inicio</a></li>
                         <li><a href="#categories">Soluciones</a></li>
-                        <li><a href="#game">Juego</a></li>
-                        <li><a href="#about">Acerca de</a></li>
+                        <li><a href="#tools">Herramientas</a></li>
+                        <li><a href="#game">Evaluación</a></li>
                     </ul>
                 </nav>
             </div>
@@ -467,9 +575,10 @@
     <!-- Contenido principal -->
     <main class="container">
         <section class="hero" id="home">
-            <h1>Portal de Solución de Incidentes</h1>
-            <p>Herramienta de apoyo para agentes de Teleperformance Colombia que brindan servicio a MásMóvil. Encuentra guías paso a paso para resolver incidentes de FTTH/WiFi, Móviles y Agile TV.</p>
-            <p>Utiliza las guías interactivas o pon a prueba tus conocimientos con el juego de evaluación.</p>
+            <h1>Portal de Solución de Incidentes - MásMóvil</h1>
+            <p><strong>Herramienta exclusiva para agentes de Teleperformance Colombia</strong></p>
+            <p>Este portal contiene guías completas para resolver TODOS los incidentes reportados por clientes de MásMóvil, incluyendo instrucciones detalladas sobre cuándo y cómo usar las herramientas internas de la empresa.</p>
+            <p>Cada solución incluye referencias visuales de equipos (ONT, routers, decodificadores, móviles) y simulaciones paso a paso del uso de sistemas internos.</p>
         </section>
 
         <!-- Categorías de solución -->
@@ -483,8 +592,8 @@
                         <h3>FTTH y WiFi</h3>
                     </div>
                     <div class="category-content">
-                        <p>Soluciones para problemas de fibra óptica, conexión a internet, señal WiFi, configuración de routers y equipos de acceso.</p>
-                        <button class="btn open-modal" data-modal="ftth-modal">Ver Soluciones</button>
+                        <p><strong>Cubre todos los problemas de:</strong> Fibra óptica, conexión a internet, señal WiFi, configuración de routers, ONT, fallos de línea, velocidad baja, cortes intermitentes, etc.</p>
+                        <button class="btn open-modal" data-modal="ftth-modal">Ver Todos los Problemas</button>
                     </div>
                 </div>
 
@@ -495,8 +604,8 @@
                         <h3>Móviles</h3>
                     </div>
                     <div class="category-content">
-                        <p>Soluciones para problemas de cobertura, llamadas, mensajería, datos móviles, configuración de APN y servicios móviles.</p>
-                        <button class="btn open-modal" data-modal="mobile-modal">Ver Soluciones</button>
+                        <p><strong>Cubre todos los problemas de:</strong> Cobertura, llamadas, mensajería, datos móviles, configuración de APN, servicios móviles, roaming, facturación móvil, etc.</p>
+                        <button class="btn open-modal" data-modal="mobile-modal">Ver Todos los Problemas</button>
                     </div>
                 </div>
 
@@ -507,117 +616,698 @@
                         <h3>Agile TV</h3>
                     </div>
                     <div class="category-content">
-                        <p>Soluciones para problemas de señal de TV, canales, decodificadores, configuración de equipos y servicios de televisión.</p>
-                        <button class="btn open-modal" data-modal="tv-modal">Ver Soluciones</button>
+                        <p><strong>Cubre todos los problemas de:</strong> Señal de TV, canales, decodificadores, configuración de equipos, grabaciones, aplicaciones, audio, video, paquetes de canales, etc.</p>
+                        <button class="btn open-modal" data-modal="tv-modal">Ver Todos los Problemas</button>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Sección de herramientas internas -->
+        <section id="tools" style="margin-top: 3rem; background-color: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+            <h2 style="text-align: center; margin-bottom: 1.5rem; color: var(--secondary-color);">
+                <i class="fas fa-tools"></i> Herramientas Internas de Teleperformance
+            </h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Instrucciones sobre cuándo y cómo usar las herramientas de la empresa durante la atención de incidentes:</p>
+            
+            <div class="tool-simulation" style="margin-bottom: 1.5rem;">
+                <h5><i class="fas fa-desktop"></i> Sistema de Gestión de Tickets (CRM)</h5>
+                <p><strong>Uso:</strong> Siempre que atiendas un caso, debes crear/actualizar un ticket. Documenta cada paso realizado.</p>
+                <p><strong>Acceso:</strong> Via Intranet > Aplicaciones > CRM MásMóvil</p>
+                <button class="btn btn-tool" style="margin-top: 0.5rem;" onclick="openToolSimulation('crm')">Ver Simulación</button>
+            </div>
+            
+            <div class="tool-simulation" style="margin-bottom: 1.5rem;">
+                <h5><i class="fas fa-satellite"></i> Monitoreo de Red y Outages</h5>
+                <p><strong>Uso:</strong> Verificar cortes generales en zona del cliente antes de diagnosticar problema individual.</p>
+                <p><strong>Acceso:</strong> Herramientas > Red MásMóvil > Monitoreo</p>
+                <button class="btn btn-tool" style="margin-top: 0.5rem;" onclick="openToolSimulation('monitoreo')">Ver Simulación</button>
+            </div>
+            
+            <div class="tool-simulation" style="margin-bottom: 1.5rem;">
+                <h5><i class="fas fa-signal"></i> Diagnóstico Remoto de Equipos</h5>
+                <p><strong>Uso:</strong> Verificar estado de ONT/routers, atenuación de señal, reinicios remotos, etc.</p>
+                <p><strong>Acceso:</strong> Herramientas > Diagnóstico > Remoto</p>
+                <button class="btn btn-tool" style="margin-top: 0.5rem;" onclick="openToolSimulation('diagnostico')">Ver Simulación</button>
+            </div>
+            
+            <div class="tool-simulation">
+                <h5><i class="fas fa-calendar-alt"></i> Agenda de Visitas Técnicas</h5>
+                <p><strong>Uso:</strong> Programar visitas cuando el problema no se resuelve remotamente o hay falla física.</p>
+                <p><strong>Acceso:</strong> CRM > Agenda > Visitas Técnicas</p>
+                <button class="btn btn-tool" style="margin-top: 0.5rem;" onclick="openToolSimulation('agenda')">Ver Simulación</button>
+            </div>
+        </section>
+
         <!-- Botón del juego -->
         <button class="btn btn-game" id="open-game">
-            <i class="fas fa-gamepad"></i> Jugar - Evaluación de Conocimientos
+            <i class="fas fa-gamepad"></i> Evaluación de Conocimientos - ¡Pon a prueba lo aprendido!
         </button>
     </main>
 
     <!-- Footer -->
     <footer id="about">
         <div class="container">
-            <p>Portal de Solución de Incidentes - Teleperformance Colombia para MásMóvil</p>
-            <p>Herramienta de apoyo para agentes | Versión 1.0</p>
-            <p><i class="fas fa-headset"></i> Soporte interno: Ext. 1234</p>
+            <p><strong>Portal de Solución de Incidentes - Teleperformance Colombia para MásMóvil</strong></p>
+            <p>Herramienta de apoyo para agentes | Versión 2.0 - Completa</p>
+            <p><i class="fas fa-headset"></i> Soporte interno: Ext. 1234 | <i class="fas fa-envelope"></i> soporte.portal@teleperformance.co</p>
         </div>
     </footer>
 
-    <!-- Modal FTTH y WiFi -->
+    <!-- Modal FTTH y WiFi - COMPLETO -->
     <div class="modal" id="ftth-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2><i class="fas fa-wifi"></i> Solución de Incidentes FTTH y WiFi</h2>
+                <h2><i class="fas fa-wifi"></i> Solución de TODOS los Incidentes FTTH y WiFi</h2>
                 <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
+                <div class="image-reference">
+                    <p><strong>Referencia visual - Equipos FTTH:</strong> ONT (izquierda) y Router WiFi (derecha)</p>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="height: 150px; background: linear-gradient(to bottom, #333, #666); border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; margin-bottom: 10px;">
+                                <i class="fas fa-network-wired" style="font-size: 3rem;"></i>
+                                <p style="margin-top: 10px;">ONT Huawei/Hipertron</p>
+                            </div>
+                            <p style="text-align: center; font-size: 0.9rem;">Luces: POWER, PON/GPON, LOS, LAN</p>
+                        </div>
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="height: 150px; background: linear-gradient(to bottom, #e20074, #0054a6); border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; margin-bottom: 10px;">
+                                <i class="fas fa-wifi" style="font-size: 3rem;"></i>
+                                <p style="margin-top: 10px;">Router WiFi MásMóvil</p>
+                            </div>
+                            <p style="text-align: center; font-size: 0.9rem;">Luces: Power, Internet, WiFi 2.4G, WiFi 5G</p>
+                        </div>
+                    </div>
+                </div>
+                
                 <h3>Seleccione el tipo de problema:</h3>
-                <ul class="problem-list">
-                    <li data-submodal="ftth-no-internet">
-                        <h4>Cliente sin internet <i class="fas fa-chevron-right"></i></h4>
-                        <p>El cliente reporta falta de conexión a internet</p>
-                    </li>
-                    <li data-submodal="ftth-slow-internet">
-                        <h4>Internet lento <i class="fas fa-chevron-right"></i></h4>
-                        <p>El cliente reporta velocidad de internet por debajo de lo contratado</p>
-                    </li>
-                    <li data-submodal="ftth-wifi-issues">
-                        <h4>Problemas con señal WiFi <i class="chevron-right"></i></h4>
-                        <p>El cliente reporta mala señal WiFi o desconexiones frecuentes</p>
-                    </li>
-                    <li data-submodal="ftth-equipment-issues">
-                        <h4>Problemas con equipo <i class="fas fa-chevron-right"></i></h4>
-                        <p>El cliente reporta problemas con el router, ONT u otro equipo</p>
-                    </li>
-                </ul>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-plug"></i> Problemas de Conexión Total</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="ftth-no-internet-total">
+                            <div>
+                                <h4>Sin internet - Todas las luces apagadas</h4>
+                                <p>Cliente sin electricidad o equipo desenchufado</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="ftth-no-pon-light">
+                            <div>
+                                <h4>Luz PON/GPON apagada o roja</h4>
+                                <p>Problema con la fibra óptica (corte, atenuación alta)</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="ftth-los-light-on">
+                            <div>
+                                <h4>Luz LOS encendida (roja/naranja)</h4>
+                                <p>Pérdida de señal óptica, fibra desconectada o dañada</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-tachometer-alt"></i> Problemas de Rendimiento</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="ftth-slow-internet">
+                            <div>
+                                <h4>Internet lento - Velocidad por debajo de lo contratado</h4>
+                                <p>Problemas de velocidad en descarga/subida</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="ftth-intermittent-connection">
+                            <div>
+                                <h4>Conexión intermitente - Se corta constantemente</h4>
+                                <p>Inestabilidad en la conexión, picos de atenuación</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="ftth-high-latency">
+                            <div>
+                                <h4>Alta latencia (ping) en juegos/llamadas</h4>
+                                <p>Problemas de respuesta en tiempo real</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-broadcast-tower"></i> Problemas de WiFi</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="ftth-wifi-weak-signal">
+                            <div>
+                                <h4>Señal WiFi débil en algunas áreas</h4>
+                                <p>Cobertura WiFi insuficiente en el hogar</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="ftth-wifi-disconnections">
+                            <div>
+                                <h4>Dispositivos se desconectan del WiFi frecuentemente</h4>
+                                <p>Inestabilidad en la conexión WiFi</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="ftth-wifi-no-5ghz">
+                            <div>
+                                <h4>No aparece red WiFi de 5GHz</h4>
+                                <p>Problema con banda de 5GHz o dispositivo incompatible</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="ftth-wifi-channel-interference">
+                            <div>
+                                <h4>WiFi lento por interferencias</h4>
+                                <p>Muchas redes WiFi vecinas en mismo canal</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-network-wired"></i> Problemas de Equipos y Configuración</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="ftth-router-reset">
+                            <div>
+                                <h4>Router reseteado a configuración de fábrica</h4>
+                                <p>Cliente perdió configuración WiFi y personalizaciones</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="ftth-port-forwarding">
+                            <div>
+                                <h4>Problemas con reenvío de puertos (port forwarding)</h4>
+                                <p>No funcionan servidores, cámaras IP, juegos online</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="ftth-parental-control">
+                            <div>
+                                <h4>Control parental bloqueando contenidos</h4>
+                                <p>Restricciones activadas bloqueando acceso</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="ftth-ip-conflict">
+                            <div>
+                                <h4>Conflictos de IP en la red local</h4>
+                                <p>Varios dispositivos con misma dirección IP</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-phone-alt"></i> Problemas con Telefonía sobre IP (VoIP)</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="ftth-voip-no-calls">
+                            <div>
+                                <h4>Teléfono fijo no hace/recibe llamadas</h4>
+                                <p>Problema con servicio de voz sobre IP</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="ftth-voip-poor-quality">
+                            <div>
+                                <h4>Mala calidad en llamadas (eco, cortes)</h4>
+                                <p>Problemas de audio en telefonía IP</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Móviles -->
+    <!-- Modal Móviles - COMPLETO -->
     <div class="modal" id="mobile-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2><i class="fas fa-mobile-alt"></i> Solución de Incidentes Móviles</h2>
+                <h2><i class="fas fa-mobile-alt"></i> Solución de TODOS los Incidentes Móviles</h2>
                 <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
+                <div class="image-reference">
+                    <p><strong>Referencia visual - Menús de configuración móvil:</strong></p>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                            <div style="height: 200px; background-color: #f0f0f0; border-radius: 16px; padding: 1rem; position: relative;">
+                                <div style="position: absolute; top: 10px; left: 10px; right: 10px; background-color: #e20074; height: 20px; border-radius: 10px;"></div>
+                                <div style="margin-top: 40px;">
+                                    <div style="background-color: white; padding: 8px; border-radius: 8px; margin-bottom: 8px; text-align: left;">
+                                        <i class="fas fa-signal" style="color: #666; margin-right: 8px;"></i>
+                                        <span style="font-size: 0.8rem;">Conexiones</span>
+                                    </div>
+                                    <div style="background-color: white; padding: 8px; border-radius: 8px; margin-bottom: 8px; text-align: left;">
+                                        <i class="fas fa-wifi" style="color: #666; margin-right: 8px;"></i>
+                                        <span style="font-size: 0.8rem;">Redes WiFi</span>
+                                    </div>
+                                    <div style="background-color: white; padding: 8px; border-radius: 8px; text-align: left;">
+                                        <i class="fas fa-sim-card" style="color: #666; margin-right: 8px;"></i>
+                                        <span style="font-size: 0.8rem;">SIM y red móvil</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Menú Android/iOS - Configuración</p>
+                        </div>
+                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                            <div style="height: 200px; background-color: #333; border-radius: 16px; padding: 1rem; position: relative; color: white;">
+                                <div style="position: absolute; top: 10px; left: 10px; right: 10px; text-align: center; font-size: 0.8rem;">
+                                    APN MásMóvil
+                                </div>
+                                <div style="margin-top: 40px;">
+                                    <div style="background-color: #444; padding: 8px; border-radius: 8px; margin-bottom: 8px; text-align: left;">
+                                        <span style="font-size: 0.7rem;">Nombre: MásMóvil Internet</span>
+                                    </div>
+                                    <div style="background-color: #444; padding: 8px; border-radius: 8px; margin-bottom: 8px; text-align: left;">
+                                        <span style="font-size: 0.7rem;">APN: internet.masmovil.es</span>
+                                    </div>
+                                    <div style="background-color: #444; padding: 8px; border-radius: 8px; text-align: left;">
+                                        <span style="font-size: 0.7rem;">MMSC: http://mms.masmovil.es</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Configuración APN correcta</p>
+                        </div>
+                    </div>
+                </div>
+                
                 <h3>Seleccione el tipo de problema:</h3>
-                <ul class="problem-list">
-                    <li data-submodal="mobile-no-service">
-                        <h4>Sin servicio móvil <i class="fas fa-chevron-right"></i></h4>
-                        <p>El cliente no tiene señal o no puede hacer/recepcionar llamadas</p>
-                    </li>
-                    <li data-submodal="mobile-data-issues">
-                        <h4>Problemas con datos móviles <i class="fas fa-chevron-right"></i></h4>
-                        <p>El cliente no puede navegar por internet desde su móvil</p>
-                    </li>
-                    <li data-submodal="mobile-call-issues">
-                        <h4>Problemas con llamadas <i class="fas fa-chevron-right"></i></h4>
-                        <p>El cliente reporta problemas para realizar o recibir llamadas</p>
-                    </li>
-                    <li data-submodal="mobile-configuration">
-                        <h4>Configuración de servicios <i class="fas fa-chevron-right"></i></h4>
-                        <p>El cliente necesita configurar APN, roaming u otros servicios</p>
-                    </li>
-                </ul>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-signal"></i> Problemas de Cobertura y Señal</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="mobile-no-service">
+                            <div>
+                                <h4>Sin servicio móvil - Sin señal o "No service"</h4>
+                                <p>Cliente sin cobertura o problema de red</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-weak-signal">
+                            <div>
+                                <h4>Señal débil intermitente</h4>
+                                <p>Barras de señal bajas o fluctuantes</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-no-4g">
+                            <div>
+                                <h4>No conecta a 4G/5G, solo 3G o 2G</h4>
+                                <p>Problema con datos de alta velocidad</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-database"></i> Problemas con Datos Móviles</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="mobile-no-data">
+                            <div>
+                                <h4>Sin datos móviles - No navega por internet</h4>
+                                <p>Conexión de datos no funciona</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-slow-data">
+                            <div>
+                                <h4>Datos móviles lentos</h4>
+                                <p>Velocidad de internet baja en móvil</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-data-limit">
+                            <div>
+                                <h4>Datos agotados antes de fin de mes</h4>
+                                <p>Consumo excesivo o problema de contabilización</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-apn-configuration">
+                            <div>
+                                <h4>Configuración APN incorrecta o faltante</h4>
+                                <p>No puede configurar datos móviles</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-phone"></i> Problemas con Llamadas</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="mobile-cant-make-calls">
+                            <div>
+                                <h4>No puede realizar llamadas</h4>
+                                <p>Error al marcar o llamada no sale</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-cant-receive-calls">
+                            <div>
+                                <h4>No recibe llamadas - Va directo a buzón</h4>
+                                <p>Problema con recepción de llamadas</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-call-quality">
+                            <div>
+                                <h4>Mala calidad en llamadas (cortes, eco)</h4>
+                                <p>Problemas de audio durante llamadas</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-voicemail">
+                            <div>
+                                <h4>Problemas con buzón de voz</h4>
+                                <p>No accede a mensajes o configuración</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-sms"></i> Problemas con Mensajería</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="mobile-cant-send-sms">
+                            <div>
+                                <h4>No puede enviar SMS</h4>
+                                <p>Mensajes no se envían</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-cant-receive-sms">
+                            <div>
+                                <h4>No recibe SMS</h4>
+                                <p>Mensajes no llegan al dispositivo</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-mms-issues">
+                            <div>
+                                <h4>Problemas con MMS (multimedia)</h4>
+                                <p>No envía/recibe fotos por mensaje</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-globe-americas"></i> Problemas con Roaming</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="mobile-roaming-not-working">
+                            <div>
+                                <h4>Roaming no funciona en el extranjero</h4>
+                                <p>Sin servicio fuera de España</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-high-roaming-charges">
+                            <div>
+                                <h4>Cargos excesivos por roaming</h4>
+                                <p>Facturación elevada por uso en extranjero</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-sim-card"></i> Problemas con SIM y Dispositivo</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="mobile-sim-not-recognized">
+                            <div>
+                                <h4>SIM no reconocida - "Inserte SIM"</h4>
+                                <p>Problema con tarjeta SIM o lector</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-esim-issues">
+                            <div>
+                                <h4>Problemas con eSIM</h4>
+                                <p>Configuración o activación de eSIM</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="mobile-wifi-calling">
+                            <div>
+                                <h4>WiFi Calling no funciona</h4>
+                                <p>Problemas con llamadas sobre WiFi</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Agile TV -->
+    <!-- Modal Agile TV - COMPLETO -->
     <div class="modal" id="tv-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2><i class="fas fa-tv"></i> Solución de Incidentes Agile TV</h2>
+                <h2><i class="fas fa-tv"></i> Solución de TODOS los Incidentes Agile TV</h2>
                 <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
+                <div class="image-reference">
+                    <p><strong>Referencia visual - Decodificador Agile TV y Menús:</strong></p>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                            <div style="height: 150px; background-color: #222; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; margin-bottom: 10px; position: relative;">
+                                <i class="fas fa-tv" style="font-size: 3rem; color: #e20074;"></i>
+                                <div style="position: absolute; bottom: 10px; left: 10px; width: 10px; height: 10px; border-radius: 50%; background-color: #e20074;"></div>
+                                <div style="position: absolute; bottom: 10px; right: 10px; width: 10px; height: 10px; border-radius: 50%; background-color: #e20074;"></div>
+                            </div>
+                            <p style="font-size: 0.9rem;">Decodificador Agile TV</p>
+                            <p style="font-size: 0.8rem; color: #666;">Luces: Power, Standby, Network</p>
+                        </div>
+                        <div style="flex: 1; min-width: 200px; text-align: center;">
+                            <div style="height: 150px; background-color: #1a1a2e; border-radius: 8px; padding: 1rem; color: white; margin-bottom: 10px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                    <div style="width: 30px; height: 30px; background-color: #e20074; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <span>Menú Principal Agile TV</span>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                    <div style="background-color: #16213e; padding: 5px; border-radius: 4px; text-align: center; font-size: 0.8rem;">
+                                        <i class="fas fa-film"></i> Canales
+                                    </div>
+                                    <div style="background-color: #16213e; padding: 5px; border-radius: 4px; text-align: center; font-size: 0.8rem;">
+                                        <i class="fas fa-play-circle"></i> Grabaciones
+                                    </div>
+                                    <div style="background-color: #16213e; padding: 5px; border-radius: 4px; text-align: center; font-size: 0.8rem;">
+                                        <i class="fas fa-cog"></i> Ajustes
+                                    </div>
+                                    <div style="background-color: #16213e; padding: 5px; border-radius: 4px; text-align: center; font-size: 0.8rem;">
+                                        <i class="fab fa-netflix"></i> Apps
+                                    </div>
+                                </div>
+                            </div>
+                            <p style="font-size: 0.9rem;">Interfaz del decodificador</p>
+                        </div>
+                    </div>
+                </div>
+                
                 <h3>Seleccione el tipo de problema:</h3>
-                <ul class="problem-list">
-                    <li data-submodal="tv-no-signal">
-                        <h4>Sin señal de TV <i class="fas fa-chevron-right"></i></h4>
-                        <p>El cliente no tiene señal o pantalla en negro</p>
-                    </li>
-                    <li data-submodal="tv-pixelated">
-                        <h4>Señal pixelada o congelada <i class="fas fa-chevron-right"></i></h4>
-                        <p>El cliente reporta imagen pixelada o que se congela</p>
-                    </li>
-                    <li data-submodal="tv-channels-issues">
-                        <h4>Problemas con canales <i class="fas fa-chevron-right"></i></h4>
-                        <p>El cliente no ve ciertos canales o tienen problemas de audio</p>
-                    </li>
-                    <li data-submodal="tv-equipment-issues">
-                        <h4>Problemas con decodificador <i class="fas fa-chevron-right"></i></h4>
-                        <p>El cliente reporta problemas con el decodificador o control remoto</p>
-                    </li>
-                </ul>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-satellite"></i> Problemas de Señal y Visualización</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="tv-no-signal">
+                            <div>
+                                <h4>Sin señal de TV - Pantalla negra o azul</h4>
+                                <p>No hay imagen en ningún canal</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-pixelated">
+                            <div>
+                                <h4>Señal pixelada, congelada o con bloques</h4>
+                                <p>Imagen se pixela o congela constantemente</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-no-hd-channels">
+                            <div>
+                                <h4>Canales HD no se ven o son SD</h4>
+                                <p>Problema con canales de alta definición</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-sound-no-picture">
+                            <div>
+                                <h4>Tiene audio pero no imagen</h4>
+                                <p>Escucha el sonido pero pantalla negra</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-list"></i> Problemas con Canales</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="tv-missing-channels">
+                            <div>
+                                <h4>Faltan canales en la guía</h4>
+                                <p>No aparecen canales contratados</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-channels-scrambled">
+                            <div>
+                                <h4>Canales codificados/no autorizados</h4>
+                                <p>Mensaje de "canal no disponible" o codificado</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-wrong-language">
+                            <div>
+                                <h4>Idioma incorrecto en canales</h4>
+                                <p>Audio en idioma no deseado</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-epg-not-working">
+                            <div>
+                                <h4>Guía de programación (EPG) no funciona</h4>
+                                <p>No muestra información de programas</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-record-vinyl"></i> Problemas con Grabaciones y Pausa en Directo</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="tv-cant-record">
+                            <div>
+                                <h4>No puede grabar programas</h4>
+                                <p>Error al programar grabaciones</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-recordings-missing">
+                            <div>
+                                <h4>Grabaciones desaparecen</h4>
+                                <p>Contenido grabado se pierde</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-pause-live-not-working">
+                            <div>
+                                <h4>Pausa en directo no funciona</h4>
+                                <p>No puede pausar televisión en vivo</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-storage-full">
+                            <div>
+                                <h4>Almacenamiento lleno</h4>
+                                <p>No hay espacio para más grabaciones</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-cube"></i> Problemas con Decodificador y Hardware</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="tv-decoder-no-power">
+                            <div>
+                                <h4>Decodificador no enciende</h4>
+                                <p>Sin luz de encendido, no responde</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-decoder-slow">
+                            <div>
+                                <h4>Decodificador lento o se bloquea</h4>
+                                <p>Interfaz responde lentamente o se congela</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-remote-not-working">
+                            <div>
+                                <h4>Control remoto no funciona</h4>
+                                <p>No responde a comandos del control</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-multiple-decoders">
+                            <div>
+                                <h4>Problemas con múltiples decodificadores</h4>
+                                <p>Configuración de TV multiroom</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fab fa-android"></i> Problemas con Aplicaciones y Contenido Adicional</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="tv-apps-not-working">
+                            <div>
+                                <h4>Aplicaciones (Netflix, YouTube) no funcionan</h4>
+                                <p>Problemas con apps de streaming</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-iptv-issues">
+                            <div>
+                                <h4>Problemas con servicio IPTV</h4>
+                                <p>Fallos en transmisión por internet</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-catchup-not-working">
+                            <div>
+                                <h4>TV de catch-up no funciona</h4>
+                                <p>No puede ver programas ya emitidos</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h3><i class="fas fa-file-invoice-dollar"></i> Problemas de Facturación y Paquetes</h3>
+                    <ul class="problem-list">
+                        <li data-submodal="tv-charges-pay-per-view">
+                            <div>
+                                <h4>Cargos no reconocidos de PPV</h4>
+                                <p>Facturación por eventos no solicitados</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li data-submodal="tv-package-changes">
+                            <div>
+                                <h4>Cambios de paquete no aplicados</h4>
+                                <p>Canales no actualizados tras modificación</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -644,6 +1334,7 @@
                                 <i class="fas fa-tv"></i> Agile TV
                             </div>
                         </div>
+                        <p style="margin-top: 1rem; color: #666;">Cada categoría contiene 10 preguntas con situaciones reales que podrías enfrentar como agente.</p>
                     </div>
 
                     <div id="game-questions" style="display: none;">
@@ -652,7 +1343,10 @@
                             <div class="options-container" id="options-container">
                                 <!-- Opciones se insertarán aquí -->
                             </div>
-                            <p id="question-progress">Pregunta 1 de 5</p>
+                            <p id="question-progress">Pregunta 1 de 10</p>
+                            <div id="question-explanation" style="display: none; margin-top: 1rem; padding: 1rem; background-color: #e7f3ff; border-radius: var(--border-radius);">
+                                <strong><i class="fas fa-info-circle"></i> Explicación:</strong> <span id="explanation-text"></span>
+                            </div>
                         </div>
                         <div class="game-navigation">
                             <button class="btn" id="prev-question" disabled>Anterior</button>
@@ -673,8 +1367,12 @@
                                 <p><strong>Respuestas correctas:</strong> <span id="correct-answers">0</span> de <span id="total-questions">0</span></p>
                                 <p><strong>Tiempo:</strong> <span id="game-time">0</span> segundos</p>
                                 <p id="performance-feedback"></p>
+                                <div id="tool-usage-feedback" style="margin-top: 1rem; padding: 1rem; background-color: #f8f9fa; border-radius: var(--border-radius);">
+                                    <h4><i class="fas fa-tools"></i> Recomendaciones de uso de herramientas:</h4>
+                                    <p id="tool-feedback-text"></p>
+                                </div>
                             </div>
-                            <button class="btn" id="restart-game">Intentar otra categoría</button>
+                            <button class="btn" id="restart-game" style="margin-top: 1.5rem;">Intentar otra categoría</button>
                         </div>
                     </div>
                 </div>
@@ -695,118 +1393,388 @@
         </div>
     </div>
 
+    <!-- Modal para simulaciones de herramientas -->
+    <div class="modal" id="tool-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-desktop"></i> Simulación de Herramienta Interna</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="tool-modal-content">
+                <!-- Contenido se cargará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Datos para las soluciones de problemas
+        // Base de datos completa de soluciones
         const solutionData = {
-            "ftth-no-internet": {
-                title: "Cliente sin internet - Solución paso a paso",
+            // FTTH - Problemas de conexión total
+            "ftth-no-internet-total": {
+                title: "Cliente sin internet - Todas las luces del equipo apagadas",
                 steps: [
-                    "Verificar estado del servicio en área del cliente (herramienta de outages).",
-                    "Preguntar al cliente si las luces del router/ONT están encendidas y en qué color.",
-                    "Si todas las luces están apagadas, verificar conexión eléctrica y que el equipo esté encendido.",
-                    "Si luz de POWER está encendida pero la de PON/GPON está apagada o parpadeando, verificar conexión de fibra óptica.",
-                    "Si luz de INTERNET/LAN está apagada, reiniciar router (apagar 30 segundos, encender).",
-                    "Pedir al cliente que verifique conexión por cable (Ethernet) para descartar problema WiFi.",
-                    "Si persiste, realizar test de señal desde herramienta interna y si hay atenuación alta, programar visita técnica."
-                ]
+                    {
+                        step: "Verificar estado del servicio en la zona usando herramienta de outages (Sistema > Monitoreo > Outages).",
+                        tool: "Sistema de monitoreo de outages",
+                        image: "outage-map"
+                    },
+                    {
+                        step: "Si hay outage reportado, informar al cliente del tiempo estimado de solución y ofrecer seguimiento.",
+                        tool: "CRM - Actualizar ticket con código de outage"
+                    },
+                    {
+                        step: "Si no hay outage, preguntar al cliente si hay corte eléctrico en su zona o si el equipo está desconectado.",
+                        tool: ""
+                    },
+                    {
+                        step: "Pedir que verifique: 1) Cable de alimentación conectado al equipo y a la toma eléctrica. 2) Que la toma eléctrica funcione (probar con otro dispositivo).",
+                        tool: ""
+                    },
+                    {
+                        step: "Si el equipo está conectado pero no enciende, verificar si el transformador está caliente (puede estar quemado).",
+                        tool: ""
+                    },
+                    {
+                        step: "Si el equipo enciende pero no hay luces, podría ser falla del equipo. Programar visita técnica para reemplazo.",
+                        tool: "Agenda de visitas técnicas - Solicitar reemplazo de ONT/router"
+                    }
+                ],
+                tools: ["Sistema de monitoreo", "CRM", "Agenda de visitas"]
             },
+            
+            "ftth-no-pon-light": {
+                title: "Luz PON/GPON apagada o en rojo - Problema con fibra óptica",
+                steps: [
+                    {
+                        step: "Verificar en sistema de diagnóstico remoto el estado de la ONT del cliente.",
+                        tool: "Herramienta de diagnóstico remoto > Buscar por número de línea"
+                    },
+                    {
+                        step: "Revisar atenuación de señal. Valores normales: -8dB a -27dB. Si es mayor a -27dB, hay atenuación alta.",
+                        tool: "Diagnóstico > Atenuación de señal"
+                    },
+                    {
+                        step: "Pedir al cliente que verifique el cable de fibra óptica (cable amarillo) esté firmemente conectado en la ONT.",
+                        tool: ""
+                    },
+                    {
+                        step: "Si la conexión parece correcta, solicitar reinicio de ONT desde el sistema (si está disponible).",
+                        tool: "Diagnóstico remoto > Reinicio de ONT"
+                    },
+                    {
+                        step: "Si persiste luz PON apagada/roja, hay posible corte de fibra o problema en distribución. Programar visita técnica.",
+                        tool: "CRM > Crear orden de trabajo para técnico de fibra"
+                    },
+                    {
+                        step: "Mientras se resuelve, ofrecer alternativas: Datos móviles adicionales si tiene contrato móvil con MásMóvil.",
+                        tool: "Sistema de bonificaciones > Ofrecer datos de cortesía"
+                    }
+                ],
+                tools: ["Diagnóstico remoto", "CRM", "Sistema de bonificaciones"]
+            },
+            
             "ftth-slow-internet": {
-                title: "Internet lento - Solución paso a paso",
+                title: "Internet lento - Velocidad por debajo de lo contratado",
                 steps: [
-                    "Pedir al cliente que realice test de velocidad en speedtest.masmovil.es desde un dispositivo conectado por cable Ethernet.",
-                    "Verificar que el resultado esté dentro del 80% de la velocidad contratada.",
-                    "Si la velocidad es baja por cable, revisar atenuación de señal en herramienta interna.",
-                    "Si la velocidad es buena por cable pero mala por WiFi, revisar ubicación del router, interferencias y canales WiFi.",
-                    "Recomendar al cliente conectar dispositivo a banda de 5GHz si está disponible y el dispositivo es compatible.",
-                    "Verificar cantidad de dispositivos conectados y actividad de descargas/streaming.",
-                    "Si persiste, sugerir reinicio de router y cambio de canal WiFi (canales 1, 6 u 11 en 2.4GHz)."
-                ]
+                    {
+                        step: "Pedir al cliente realizar test de velocidad en speedtest.masmovil.es desde dispositivo conectado por cable Ethernet.",
+                        tool: ""
+                    },
+                    {
+                        step: "Verificar resultado: Debe ser al menos 80% de velocidad contratada. Ej: 300Mbps → mínimo 240Mbps.",
+                        tool: ""
+                    },
+                    {
+                        step: "Si velocidad por cable es correcta pero WiFi es lenta, diagnosticar problema WiFi.",
+                        tool: ""
+                    },
+                    {
+                        step: "Si velocidad por cable también es baja, verificar en sistema la atenuación y estado de línea.",
+                        tool: "Diagnóstico > Estado de línea y atenuación"
+                    },
+                    {
+                        step: "Revisar consumo actual: Cliente podría tener descargas/torrents consumiendo ancho de banda.",
+                        tool: "Monitor de consumo > Ver tráfico en tiempo real"
+                    },
+                    {
+                        step: "Si hay atenuación alta (>27dB), programar visita técnica. Si consumo es normal y atenuación OK, reprogramar puertos OLT.",
+                        tool: "Sistema OLT > Reprovisionamiento de puerto"
+                    },
+                    {
+                        step: "Para problemas WiFi: Recomendar conectar a banda 5GHz, cambiar canal WiFi, reposicionar router.",
+                        tool: ""
+                    }
+                ],
+                tools: ["Diagnóstico remoto", "Monitor de consumo", "Sistema OLT"]
             },
+            
+            // MÓVILES - Problemas de cobertura
             "mobile-no-service": {
-                title: "Sin servicio móvil - Solución paso a paso",
+                title: "Sin servicio móvil - Sin señal o 'No service'",
                 steps: [
-                    "Verificar cobertura en la zona del cliente mediante herramienta interna.",
-                    "Preguntar si el problema es de llamadas, datos o ambos.",
-                    "Solicitar al cliente que reinicie el dispositivo móvil.",
-                    "Verificar que el dispositivo no esté en modo avión.",
-                    "Comprobar estado de la línea en sistema de gestión (suspendida, bloqueada, etc.).",
-                    "Solicitar al cliente que verifique selección de red manual/automática.",
-                    "Si persiste, realizar refresh de red o reprovisionamiento de servicios desde herramienta interna."
-                ]
+                    {
+                        step: "Verificar cobertura en la zona del cliente mediante herramienta de cobertura interna.",
+                        tool: "Mapa de cobertura > Introducir dirección del cliente"
+                    },
+                    {
+                        step: "Consultar estado de la línea en sistema de gestión: Activa, suspendida, bloqueada, etc.",
+                        tool: "Sistema de gestión móvil > Consulta de línea"
+                    },
+                    {
+                        step: "Si línea está suspendida/bloqueada, verificar motivo (falta de pago, solicitud del cliente) y proceder según política.",
+                        tool: "CRM > Ver historial de facturación y pagos"
+                    },
+                    {
+                        step: "Si línea está activa, solicitar al cliente: 1) Reiniciar dispositivo. 2) Verificar que no esté en modo avión.",
+                        tool: ""
+                    },
+                    {
+                        step: "Pedir que verifique selección de red: Configuración > Redes móviles > Selección automática.",
+                        tool: ""
+                    },
+                    {
+                        step: "Si persiste, realizar refresh de red desde sistema interno (actualización de parámetros en HLR).",
+                        tool: "Sistema HLR > Refresh de red para línea"
+                    },
+                    {
+                        step: "Si sigue sin servicio y hay cobertura en zona, programar reemplazo de SIM o verificar compatibilidad de dispositivo.",
+                        tool: "Agenda > Solicitar envío de nueva SIM"
+                    }
+                ],
+                tools: ["Mapa de cobertura", "Sistema de gestión móvil", "CRM", "Sistema HLR", "Agenda"]
             },
-            "tv-no-signal": {
-                title: "Sin señal de TV - Solución paso a paso",
+            
+            "mobile-no-data": {
+                title: "Sin datos móviles - No navega por internet",
                 steps: [
-                    "Preguntar al cliente si el problema es en todos los canales o solo algunos.",
-                    "Verificar que el decodificador esté encendido (luz LED encendida).",
-                    "Solicitar reinicio del decodificador (desconectar de la corriente 30 segundos).",
-                    "Verificar conexiones de cables (HDMI, alimentación, fibra/coaxial).",
-                    "Comprobar que el televisor esté en el canal/entrada correcta (HDMI 1, HDMI 2, etc.).",
-                    "Verificar estado del servicio de TV en la zona mediante herramienta interna.",
-                    "Si persiste, reprogramar canales o realizar reset de fábrica controlado (con backup de grabaciones)."
-                ]
+                    {
+                        step: "Verificar si tiene saldo o datos disponibles en su plan.",
+                        tool: "Sistema de gestión móvil > Consulta de saldo y datos"
+                    },
+                    {
+                        step: "Si datos agotados, ofrecer paquetes de datos adicionales según tarifa.",
+                        tool: "Sistema de ventas > Paquetes de datos adicionales"
+                    },
+                    {
+                        step: "Si tiene datos disponibles, verificar configuración de APN.",
+                        tool: ""
+                    },
+                    {
+                        step: "Guiar al cliente para configurar APN: Ajustes > Redes móviles > APN > Nuevo APN. Nombre: MásMóvil Internet, APN: internet.masmovil.es",
+                        tool: ""
+                    },
+                    {
+                        step: "Pedir reinicio de dispositivo después de configurar APN.",
+                        tool: ""
+                    },
+                    {
+                        step: "Si persiste, reprovisionar servicios de datos desde sistema interno.",
+                        tool: "Sistema HLR > Reprovisionamiento de servicios de datos"
+                    },
+                    {
+                        step: "Si problema continúa, verificar si dispositivo es compatible con bandas 4G/5G de MásMóvil.",
+                        tool: "Base de datos de dispositivos compatibles"
+                    }
+                ],
+                tools: ["Sistema de gestión móvil", "Sistema de ventas", "Sistema HLR", "Base de datos dispositivos"]
+            },
+            
+            // AGILE TV - Problemas de señal
+            "tv-no-signal": {
+                title: "Sin señal de TV - Pantalla negra o azul",
+                steps: [
+                    {
+                        step: "Verificar estado del servicio de TV en la zona mediante herramienta de outages.",
+                        tool: "Monitoreo TV > Outages de señal de TV"
+                    },
+                    {
+                        step: "Pedir al cliente que verifique: 1) Decodificador encendido (luz LED). 2) Cable HDMI/SCART conectado correctamente. 3) TV en entrada correcta (HDMI1, HDMI2, etc.).",
+                        tool: ""
+                    },
+                    {
+                        step: "Solicitar reinicio completo: Desconectar decodificador de la corriente 30 segundos, luego conectar.",
+                        tool: ""
+                    },
+                    {
+                        step: "Si persiste, verificar estado del decodificador en sistema de gestión de TV.",
+                        tool: "Sistema de gestión TV > Estado de decodificador"
+                    },
+                    {
+                        step: "Realizar refresh de señal desde sistema interno.",
+                        tool: "Sistema TV > Refresh de autorización"
+                    },
+                    {
+                        step: "Si decodificador no enciende o no responde, programar visita técnica para reemplazo.",
+                        tool: "Agenda TV > Solicitar visita técnica para decodificador"
+                    },
+                    {
+                        step: "Mientras se resuelve, ofrecer acceso a TV Online mediante app MásMóvil TV.",
+                        tool: "Sistema de soporte > Enviar instrucciones por SMS/email"
+                    }
+                ],
+                tools: ["Monitoreo TV", "Sistema de gestión TV", "Sistema TV", "Agenda TV", "Sistema de soporte"]
+            },
+            
+            "tv-pixelated": {
+                title: "Señal pixelada, congelada o con bloques",
+                steps: [
+                    {
+                        step: "Preguntar si el problema es en todos los canales o solo algunos específicos.",
+                        tool: ""
+                    },
+                    {
+                        step: "Si es en todos los canales, verificar conexión de red del decodificador (cable Ethernet o WiFi).",
+                        tool: ""
+                    },
+                    {
+                        step: "Verificar en sistema la calidad de señal del decodificador (ber, SNR).",
+                        tool: "Diagnóstico TV > Calidad de señal del decodificador"
+                    },
+                    {
+                        step: "Si señal es débil, podría ser problema de conexión de red. Recomendar conectar por cable en lugar de WiFi si es posible.",
+                        tool: ""
+                    },
+                    {
+                        step: "Si problema es solo en canales HD, verificar cable HDMI (debe ser HDMI de alta velocidad).",
+                        tool: ""
+                    },
+                    {
+                        step: "Realizar rescan de canales desde menú del decodificador: Ajustes > Sintonización > Rescan.",
+                        tool: ""
+                    },
+                    {
+                        step: "Si persiste, programar visita técnica para revisión de instalación y señal.",
+                        tool: "Agenda TV > Visita técnica para diagnóstico de señal"
+                    }
+                ],
+                tools: ["Diagnóstico TV", "Agenda TV"]
             }
         };
 
-        // Datos para el juego (preguntas y respuestas)
+        // Datos para el juego (MUCHAS más situaciones - 10 preguntas por categoría)
         const gameData = {
             ftth: {
                 category: "FTTH y WiFi",
                 questions: [
                     {
-                        question: "Un cliente llama reportando que no tiene internet. Al revisar en el sistema, ves que hay un outage reportado en su zona. ¿Qué debes hacer?",
+                        question: "Cliente llama reportando que no tiene internet. Al revisar en el sistema de outages, ves que hay un corte general en su zona que afecta a 150 clientes. El tiempo estimado de solución es 4 horas. ¿Qué debes hacer?",
                         options: [
-                            "Decirle que reinicie el router y llame de nuevo",
-                            "Informarle del outage, dar tiempo estimado de solución y ofrecer seguimiento",
-                            "Programar una visita técnica inmediata",
-                            "Sugerirle que cambie de operador"
+                            "Decirle que reinicie el router y llame de nuevo en 1 hora",
+                            "Informarle del outage, dar tiempo estimado de solución (4 horas) y ofrecer seguimiento vía SMS cuando se resuelva",
+                            "Programar una visita técnica inmediata para su domicilio",
+                            "Sugerirle que contrate otro operador porque MásMóvil tiene muchos problemas"
                         ],
                         correct: 1,
-                        explanation: "Cuando hay un outage reportado, se debe informar al cliente, proporcionar tiempo estimado de solución y ofrecer seguimiento."
+                        explanation: "Cuando hay un outage reportado que afecta a múltiples clientes, se debe informar al cliente claramente, proporcionar tiempo estimado de solución realista y ofrecer seguimiento.",
+                        tool: "Sistema de monitoreo de outages"
                     },
                     {
-                        question: "Un cliente reporta que la luz PON de su ONT está parpadeando en rojo. ¿Qué indica esto?",
+                        question: "Un cliente reporta que la luz PON de su ONT está parpadeando en rojo. Ya verificaste que el cable de fibra está bien conectado. En el sistema de diagnóstico, ves que tiene atenuación de -31dB. ¿Qué indica esto y qué acción tomas?",
                         options: [
-                            "Que el equipo está funcionando correctamente",
-                            "Que hay problemas con la señal de fibra óptica",
-                            "Que el WiFi está desactivado",
-                            "Que necesita actualizar el firmware"
+                            "Atenuación normal, pedir que reinicie el router",
+                            "Atenuación muy alta, probable corte de fibra - Programar visita técnica",
+                            "El equipo necesita actualización de firmware - Guiar para actualizar",
+                            "Problema con la configuración WiFi - Cambiar canal del router"
                         ],
                         correct: 1,
-                        explanation: "Luz PON/GPON parpadeando en rojo indica problemas con la señal de fibra óptica (corte, atenuación alta, etc.)."
+                        explanation: "Atenuación mayor a -27dB indica problema con la fibra óptica (corte, doblez, conector sucio). Se debe programar visita técnica.",
+                        tool: "Herramienta de diagnóstico remoto > Atenuación de señal"
                     },
                     {
-                        question: "Un cliente tiene velocidad baja por WiFi pero normal por cable Ethernet. ¿Cuál es la causa más probable?",
+                        question: "Cliente tiene contratados 600Mbps pero en test de velocidad por cable obtiene solo 90Mbps. Verificas en sistema y su atenuación es -19dB (normal). Su router es antiguo (modelo 2018). ¿Cuál es la causa más probable?",
                         options: [
                             "Problema en la central telefónica",
-                            "Router defectuoso que necesita reemplazo",
-                            "Interferencias o mala ubicación del router",
-                            "Límite de datos excedido"
+                            "Router antiguo que no soporta velocidades gigabit - Sugerir cambio a router nuevo",
+                            "El cliente tiene virus en su computadora",
+                            "Velocidad contratada incorrecta en sistema"
+                        ],
+                        correct: 1,
+                        explanation: "Routers antiguos pueden no soportar velocidades gigabit por limitaciones de hardware. Muchos routers de 2018 solo tienen puertos Ethernet de 100Mbps.",
+                        tool: "Base de datos de equipos > Verificar especificaciones del router"
+                    },
+                    {
+                        question: "Cliente reporta que dispositivos WiFi se desconectan frecuentemente. Al revisar en sistema, ves que tiene 25 dispositivos conectados. Su router es básico (modelo básico MásMóvil). ¿Qué recomiendas?",
+                        options: [
+                            "Reiniciar router una vez al día",
+                            "Reducir cantidad de dispositivos conectados (imposible para cliente)",
+                            "Recomendar cambio a router más potente con mayor capacidad de conexiones simultáneas",
+                            "Decirle que es normal y no hay solución"
                         ],
                         correct: 2,
-                        explanation: "Cuando la velocidad es buena por cable pero mala por WiFi, generalmente se debe a interferencias, distancia del router o obstáculos."
+                        explanation: "Routers básicos tienen limitación en cantidad de dispositivos que pueden manejar simultáneamente (usualmente 10-15). Para 25+ dispositivos se necesita router más potente.",
+                        tool: "Sistema de ventas > Ofrecer upgrade de router"
                     },
                     {
-                        question: "¿Qué canales WiFi en la banda de 2.4GHz tienen menos interferencias?",
+                        question: "Cliente no puede acceder a su cámara de seguridad IP desde fuera de casa. Las cámaras funcionan en red local. ¿Qué configuración necesita en el router?",
                         options: [
-                            "Canales 3, 7 y 10",
-                            "Canales 1, 6 y 11",
-                            "Canales 2, 5 y 9",
-                            "Todos los canales son iguales"
+                            "Cambiar contraseña WiFi",
+                            "Configurar reenvío de puertos (port forwarding) para las cámaras",
+                            "Activar control parental",
+                            "Actualizar firmware del router"
                         ],
                         correct: 1,
-                        explanation: "Los canales 1, 6 y 11 en la banda de 2.4GHz no se superponen, por lo que tienen menos interferencias entre sí."
+                        explanation: "Para acceder a dispositivos desde fuera de la red local (cámaras IP, servidores) se necesita configurar reenvío de puertos en el router.",
+                        tool: "Guías de configuración > Port forwarding para cámaras IP"
                     },
                     {
-                        question: "Un cliente no puede acceder a una página web específica pero otras funcionan. ¿Qué acción recomiendas primero?",
+                        question: "Cliente con telefonía IP reporta que llamadas tienen eco. Internet y TV funcionan bien. ¿Qué verificar primero?",
                         options: [
-                            "Reset de fábrica del router",
-                            "Cambiar los DNS a 8.8.8.8 y 8.8.4.4",
-                            "Programar visita técnica",
-                            "Verificar que la página no esté bloqueada por control parental"
+                            "Velocidad de subida - Debe ser mínima de 1Mbps para VoIP",
+                            "Router necesita reinicio",
+                            "Problema con el teléfono físico",
+                            "Configuración incorrecta del código de área"
+                        ],
+                        correct: 0,
+                        explanation: "Problemas de eco en VoIP suelen deberse a velocidad de subida insuficiente o alta latencia. VoIP requiere mínimo 100kbps por llamada pero recomienda 1Mbps.",
+                        tool: "Diagnóstico > Test de velocidad con énfasis en upload"
+                    },
+                    {
+                        question: "Cliente se mudó y quiere llevar su servicio. El técnico instaló nueva fibra pero internet no funciona. Luz POWER OK, PON fija verde, INTERNET parpadea. ¿Qué falta?",
+                        options: [
+                            "Equipo dañado durante mudanza",
+                            "Falta activar el servicio en nueva dirección en sistema",
+                            "Router necesita configuración manual",
+                            "Cliente debe pagar reactivación"
                         ],
                         correct: 1,
-                        explanation: "Cambiar los DNS a los de Google (8.8.8.8 y 8.8.4.4) puede resolver problemas de acceso a sitios específicos si hay problemas con los DNS del operador."
+                        explanation: "Cuando luz PON está fija verde significa que hay señal de fibra, pero luz INTERNET parpadeando indica que el servicio no está activado/provisionado en la nueva dirección.",
+                        tool: "Sistema de activaciones > Provisionar servicio en nueva dirección"
+                    },
+                    {
+                        question: "Cliente tiene problemas de velocidad solo en dispositivos WiFi. Por cable obtiene 300Mbps, por WiFi solo 40Mbps. ¿Qué no sería solución efectiva?",
+                        options: [
+                            "Cambiar canal WiFi a 1, 6 u 11 en 2.4GHz",
+                            "Conectar dispositivo a banda 5GHz si es compatible",
+                            "Mover router a ubicación más central",
+                            "Recomprar el mismo router modelo básico"
+                        ],
+                        correct: 3,
+                        explanation: "Recomprar el mismo router modelo básico no solucionaría el problema. Mejor opción sería upgrade a router con WiFi 6 o sistema mesh.",
+                        tool: "Diagnóstico WiFi > Análisis de canales y interferencias"
+                    },
+                    {
+                        question: "Cliente quiere bloquear acceso a redes sociales para sus hijos después de las 10pm. ¿Qué funcionalidad del router debes explicarle?",
+                        options: [
+                            "Control parental con horarios",
+                            "Filtrado MAC address",
+                            "Desactivar WiFi por las noches",
+                            "Configurar DNS parental"
+                        ],
+                        correct: 0,
+                        explanation: "La mayoría de routers modernos tienen control parental que permite bloquear categorías de sitios (redes sociales) en horarios específicos.",
+                        tool: "Guías de configuración > Control parental en router MásMóvil"
+                    },
+                    {
+                        question: "Cliente con fibra 1Gbps quiere conectar 3 dispositivos por cable. Su router solo tiene 2 puertos LAN. ¿Qué solución ofreces?",
+                        options: [
+                            "Decirle que use solo 2 dispositivos por cable",
+                            "Recomendar switch Ethernet gigabit para expandir puertos",
+                            "Que use adaptadores WiFi para los otros dispositivos",
+                            "Cambiar a plan de menor velocidad que necesita menos puertos"
+                        ],
+                        correct: 1,
+                        explanation: "Un switch Ethernet gigabit es la solución correcta para expandir puertos LAN manteniendo velocidad gigabit.",
+                        tool: "Sistema de ventas > Ofrecer switch Ethernet como accesorio"
                     }
                 ]
             },
@@ -814,59 +1782,125 @@
                 category: "Móviles",
                 questions: [
                     {
-                        question: "Un cliente no puede hacer llamadas pero sí navegar por internet. ¿Qué podría estar fallando?",
+                        question: "Cliente viajó a Alemania y no tiene servicio. Verificas que roaming está activado en su línea. En mapa de cobertura internacional, MásMóvil tiene acuerdos con operadores en Alemania. ¿Qué verificar después?",
                         options: [
-                            "Problema con los servidores DNS",
-                            "Configuración incorrecta de APN",
-                            "Problema en la red de voz (circuit-switched)",
-                            "El dispositivo no es compatible con 4G"
+                            "Si tiene saldo negativo en su línea",
+                            "Si tiene datos roaming activados en su dispositivo (ajustes > redes móviles > roaming datos)",
+                            "Si Alemania está en zona de roaming incluido en su tarifa",
+                            "Si su dispositivo es compatible con redes europeas"
                         ],
                         correct: 2,
-                        explanation: "Si los datos funcionan pero las llamadas no, generalmente es problema en la red de voz (circuit-switched), no en la de datos (packet-switched)."
+                        explanation: "Primero verificar si el destino está incluido en roaming de la tarifa. Algunas tarifas económicas no incluyen roaming en Europa o tienen límites.",
+                        tool: "Sistema de tarifas > Ver cobertura roaming para destino específico"
                     },
                     {
-                        question: "¿Qué debe hacer un cliente si no tiene señal pero otras personas en la misma zona sí tienen?",
+                        question: "Cliente no puede enviar MMS pero sí navegar por internet. Configuración APN de datos es correcta. ¿Qué falta?",
                         options: [
-                            "Cambiar inmediatamente de operador",
-                            "Reiniciar el dispositivo y verificar modo avión",
-                            "Comprar un nuevo teléfono",
-                            "Llamar a la policía"
-                        ],
-                        correct: 1,
-                        explanation: "Primero debe reiniciar el dispositivo y verificar que no esté en modo avión, luego verificar configuración de red."
-                    },
-                    {
-                        question: "Un cliente viajó al extranjero y no tiene servicio. ¿Qué verificar primero?",
-                        options: [
-                            "Si tiene saldo negativo",
-                            "Si el roaming está activado en su línea",
-                            "Si el dispositivo tiene chip",
-                            "Si contrató un plan internacional"
-                        ],
-                        correct: 1,
-                        explanation: "Primero verificar si el roaming está activado en la línea, ya que por defecto puede estar desactivado por seguridad."
-                    },
-                    {
-                        question: "¿Cuál es el APN correcto para datos móviles en MásMóvil?",
-                        options: [
-                            "internet.masmovil.es",
-                            "movistar.es",
-                            "vodafone.es",
-                            "orange.es"
+                            "Configuración específica de APN para MMS",
+                            "Tener saldo de llamadas",
+                            "Reiniciar dispositivo",
+                            "Tener almacenamiento disponible en teléfono"
                         ],
                         correct: 0,
-                        explanation: "El APN correcto para MásMóvil es internet.masmovil.es"
+                        explanation: "MMS requiere configuración APN separada. APN para MMS suele ser mms.masmovil.es con MMSC: http://mms.masmovil.es:8002",
+                        tool: "Guías de configuración > APN para MMS MásMóvil"
                     },
                     {
-                        question: "Un cliente reporta que no puede enviar MMS pero sí navegar. ¿Qué configuración verificar?",
+                        question: "Cliente cambió de iPhone a Android y ahora no tiene datos móviles. Configuración APN parece correcta. En sistema ves que línea está activa con datos. ¿Qué podría estar pasando?",
                         options: [
-                            "Configuración de APN para MMS",
-                            "Espacio de almacenamiento del dispositivo",
-                            "Configuración de correo electrónico",
-                            "Aplicación de mensajería instalada"
+                            "Dispositivo Android no es compatible",
+                            "Perfil de datos necesita reprovisionamiento por cambio de dispositivo",
+                            "Cliente debe pagar activación de datos para nuevo dispositivo",
+                            "Problema con la SIM card"
                         ],
-                        correct: 0,
-                        explanation: "Los MMS requieren configuración específica de APN (generalmente mms.masmovil.es) diferente al APN de datos."
+                        correct: 1,
+                        explanation: "A veces al cambiar entre iOS y Android el perfil de datos necesita reprovisionamiento porque los sistemas gestionan datos de forma diferente.",
+                        tool: "Sistema HLR > Reprovisionamiento de servicios de datos"
+                    },
+                    {
+                        question: "Cliente con eSIM no puede activarla. Ya recibió QR por email. ¿Qué verificar en el proceso de activación?",
+                        options: [
+                            "Que el dispositivo sea compatible con eSIM",
+                            "Que esté conectado a WiFi durante activación",
+                            "Que haya escaneado QR desde app de MásMóvil, no desde cámara",
+                            "Todas las anteriores"
+                        ],
+                        correct: 3,
+                        explanation: "Para activar eSIM se necesita: 1) Dispositivo compatible 2) Conexión WiFi estable 3) Escanear QR desde app operador o menú de configuración específico.",
+                        tool: "Guías de activación eSIM > Proceso paso a paso"
+                    },
+                    {
+                        question: "Cliente reporta que no recibe SMS de verificación de bancos/apps. SMS normales sí llegan. ¿A qué se debe esto probablemente?",
+                        options: [
+                            "Problema con todos los SMS",
+                            "Aplicaciones de mensajería bloqueando SMS",
+                            "SMS de verificación podrían estar siendo filtrados como spam",
+                            "Problema con red 2G"
+                        ],
+                        correct: 2,
+                        explanation: "SMS de verificación cortos (códigos) a veces son filtrados por aplicaciones antispam del dispositivo o bloqueados por operador por seguridad.",
+                        tool: "Sistema de soporte > Instrucciones para desbloquear SMS cortos"
+                    },
+                    {
+                        question: "Cliente con iPhone dice que llamadas van directo a buzón aunque tiene cobertura. Reinicios no solucionan. ¿Qué función específica de iPhone podría estar causando esto?",
+                        options: [
+                            "Modo avión activado",
+                            "Foco/Silencio activado",
+                            "Llamadas WiFi activadas",
+                            "Desvío condicional activado (cuando ocupado, no disponible, etc.)"
+                        ],
+                        correct: 3,
+                        correctOption: 3,
+                        explanation: "En iPhone, en Ajustes > Teléfono > Desvío de llamadas, puede haber desvíos condicionales activados que mandan llamadas a buzón.",
+                        tool: "Guías iOS > Verificar configuración de desvíos de llamada"
+                    },
+                    {
+                        question: "Cliente tiene nueva SIM pero no funciona. Verificas en sistema que SIM está activa. ¿Qué dato crucial debes verificar con el cliente?",
+                        options: [
+                            "Si quitó la película plástica de la SIM",
+                            "Número ICCID de la SIM coincide con el registrado en sistema",
+                            "Si insertó SIM en ranura correcta (dual SIM devices)",
+                            "Todas las anteriores"
+                        ],
+                        correct: 3,
+                        explanation: "Todos son puntos importantes: Película plástica debe removerse, ICCID debe coincidir (error común enviar SIM equivocada), y en dual SIM debe ir en ranura principal.",
+                        tool: "Sistema de gestión SIMs > Verificar ICCID activado vs entregado"
+                    },
+                    {
+                        question: "Cliente en zona rural con señal intermitente. Quiere mejorar cobertura en casa. ¿Qué solución ofrecerías?",
+                        options: [
+                            "Repetidor de señal para el hogar",
+                            "Cambiar a operador con mejor cobertura (no se ofrece)",
+                            "Usar solo WiFi Calling dentro de casa",
+                            "Opción 1 y 3 son válidas"
+                        ],
+                        correct: 3,
+                        explanation: "Se puede ofrecer repetidor de señal o recomendar usar WiFi Calling si tiene internet estable en casa.",
+                        tool: "Sistema de ventas > Repetidores de señal para hogar"
+                    },
+                    {
+                        question: "Cliente con 5G dice que velocidad no es mejor que 4G. ¿Qué verificar primero?",
+                        options: [
+                            "Si su tarifa incluye 5G",
+                            "Si dispositivo es compatible con bandas 5G de MásMóvil",
+                            "Si está en zona con cobertura 5G",
+                            "Todas las anteriores"
+                        ],
+                        correct: 3,
+                        explanation: "Para disfrutar 5G se necesita: 1) Tarifa que incluya 5G 2) Dispositivo compatible con bandas 5G del operador 3) Estar en zona con cobertura 5G.",
+                        tool: "Mapa cobertura 5G > Verificar ubicación del cliente"
+                    },
+                    {
+                        question: "Cliente recibió factura con cargo extra por roaming en USA. Dice que nunca viajó allí. ¿Qué podría haber pasado?",
+                        options: [
+                            "Error de facturación - Revisar registros de uso",
+                            "Alguien más usó su SIM en USA",
+                            "Dispositivo configurado con VPN que simula ubicación USA",
+                            "Cualquiera de las anteriores"
+                        ],
+                        correct: 3,
+                        explanation: "Podría ser error de facturación, uso no autorizado de SIM, o incluso VPN que confunde al sistema de facturación (aunque esto último es raro).",
+                        tool: "Sistema de facturación > Detalle de uso roaming y ubicaciones"
                     }
                 ]
             },
@@ -874,59 +1908,124 @@
                 category: "Agile TV",
                 questions: [
                     {
-                        question: "Un cliente tiene pantalla negra en todos los canales. ¿Qué acción recomiendas primero?",
+                        question: "Cliente con decodificador 4K dice que canales HD se ven pixelados pero canales SD se ven bien. ¿Qué podría ser?",
                         options: [
-                            "Reiniciar el decodificador",
-                            "Cambiar el televisor",
-                            "Actualizar el firmware",
-                            "Recontratar el servicio"
-                        ],
-                        correct: 0,
-                        explanation: "El primer paso siempre debe ser reiniciar el decodificador (desconectar de la corriente 30 segundos)."
-                    },
-                    {
-                        question: "¿Qué indica una luz roja fija en el decodificador?",
-                        options: [
-                            "Está actualizando software",
-                            "No tiene señal o hay problema de comunicación",
-                            "Está grabando un programa",
-                            "El control remoto no tiene baterías"
+                            "Problema con todos los canales",
+                            "Cable HDMI no soporta resolución 4K/HD - Necesita cable HDMI de alta velocidad",
+                            "TV no es compatible con HD",
+                            "Decodificador defectuoso que necesita reemplazo"
                         ],
                         correct: 1,
-                        explanation: "Luz roja fija generalmente indica falta de señal o problema de comunicación con la red."
+                        explanation: "Cables HDMI antiguos pueden no soportar ancho de banda para video HD/4K, causando pixelación solo en canales de alta resolución.",
+                        tool: "Guías de solución > Problemas de cable HDMI"
                     },
                     {
-                        question: "Un cliente solo tiene problemas con canales HD. ¿Qué podría ser?",
+                        question: "Cliente no puede ver partido de fútbol en canal de PPV que acaba de contratar. ¿Qué verificar en sistema?",
                         options: [
-                            "Problema con la resolución configurada",
-                            "El televisor no es compatible con HD",
-                            "Necesita contrato especial para HD",
-                            "Problema con el cable HDMI"
+                            "Si el evento ya comenzó (no se puede acceder después de iniciado)",
+                            "Si la autorización del PPV se aplicó correctamente en decodificador",
+                            "Si tiene saldo o crédito para PPV",
+                            "Todas las anteriores"
                         ],
                         correct: 3,
-                        explanation: "Si solo fallan canales HD, podría ser problema con el cable HDMI que no soporta la resolución o ancho de banda necesario."
+                        explanation: "Para PPV: 1) Evento debe estar activo 2) Autorización debe aplicarse 3) Debe tener forma de pago válida/saldo.",
+                        tool: "Sistema TV > Verificar autorizaciones PPV y estado de evento"
                     },
                     {
-                        question: "¿Cómo se resuelve problema de audio y video desincronizados?",
+                        question: "Cliente dice que grabación programada no se realizó. El programa estaba en la guía. ¿Qué podría haber fallado?",
                         options: [
-                            "Reiniciar el decodificador",
-                            "Ajustar delay de audio en configuración",
-                            "Cambiar el cable de audio",
-                            "Reset de fábrica"
+                            "Espacio insuficiente en disco duro del decodificador",
+                            "Cambio de horario del programa no actualizado en EPG",
+                            "Decodificador apagado o sin conexión a internet en momento de grabación",
+                            "Todas las anteriores"
                         ],
-                        correct: 0,
-                        explanation: "Generalmente un reinicio del decodificador resuelve problemas de desincronización de audio y video."
+                        correct: 3,
+                        explanation: "Grabaciones pueden fallar por: espacio insuficiente, cambios de programación no reflejados en EPG, o decodificador apagado/sin conexión.",
+                        tool: "Diagnóstico TV > Verificar estado de grabaciones fallidas"
                     },
                     {
-                        question: "Un cliente no puede acceder a aplicaciones de streaming desde el decodificador. ¿Qué verificar?",
+                        question: "Cliente tiene imagen pero no audio en todos los canales. ¿Qué verificar primero?",
                         options: [
-                            "Conexión a internet del decodificador",
-                            "Contraseña de Netflix/Amazon",
-                            "Memoria interna del decodificador",
-                            "Versión del sistema operativo"
+                            "Configuración de audio en decodificador (pista de audio, formato)",
+                            "Conexiones de audio (óptico, HDMI, RCA)",
+                            "Configuración de audio en TV",
+                            "Todas las anteriores en orden lógico"
                         ],
-                        correct: 0,
-                        explanation: "Primero verificar que el decodificador tenga conexión a internet, ya que las aplicaciones de streaming requieren conexión activa."
+                        correct: 3,
+                        explanation: "Verificar en orden: 1) Config audio decodificador 2) Conexiones físicas 3) Config audio TV. Comenzar por lo más simple.",
+                        tool: "Guías de solución > Problemas de audio TV"
+                    },
+                    {
+                        question: "Cliente con TV multiroom dice que segundo decodificador no enciende. El principal funciona bien. ¿Qué verificar?",
+                        options: [
+                            "Si segundo decodificador está registrado en sistema para esa línea",
+                            "Si hay alimentación en toma donde está conectado",
+                            "Si el cable coaxial/Ethernet entre decodificadores está conectado",
+                            "Todas las anteriores"
+                        ],
+                        correct: 3,
+                        explanation: "Para multiroom: 1) Decodificador debe estar registrado en sistema 2) Necesita alimentación 3) Debe tener conexión con decodificador principal.",
+                        tool: "Sistema TV multiroom > Verificar registro y estado de decodificadores"
+                    },
+                    {
+                        question: "Cliente mayor no puede manejar los 3 controles (TV, decodificador, audio). Quiere simplificar. ¿Qué solución ofrecer?",
+                        options: [
+                            "Control universal programable",
+                            "Integración por HDMI-CEC para controlar todo con un control",
+                            "Asistente de voz (Google Home/Alexa) con integración MásMóvil",
+                            "Todas las anteriores son válidas"
+                        ],
+                        correct: 3,
+                        explanation: "Varias soluciones: control universal, HDMI-CEC si dispositivos son compatibles, o integración con asistente de voz.",
+                        tool: "Guías de accesibilidad > Controles universales y simplificación"
+                    },
+                    {
+                        question: "Cliente dice que app Netflix desde decodificador no funciona, pero Netflix desde Smart TV sí funciona. ¿Qué podría ser?",
+                        options: [
+                            "Problema con todas las apps",
+                            "Necesita actualizar app Netflix en decodificador",
+                            "Credenciales Netflix incorrectas en decodificador",
+                            "Decodificador necesita conexión a internet activa (no solo señal TV)"
+                        ],
+                        correct: 3,
+                        explanation: "Apps de streaming requieren conexión a internet independiente de señal TV. Verificar que decodificador tenga conexión a internet activa.",
+                        tool: "Diagnóstico TV > Conexión a internet del decodificador"
+                    },
+                    {
+                        question: "Después de tormenta eléctrica, decodificador no enciende. Router y otros equipos sí funcionan. ¿Qué acción tomar?",
+                        options: [
+                            "Pedir que pruebe otro transformador/cable de alimentación",
+                            "Programar visita técnica para reemplazo por daño eléctrico",
+                            "Verificar fusibles en casa del cliente",
+                            "Todas las anteriores en orden"
+                        ],
+                        correct: 3,
+                        explanation: "Verificar en orden: 1) Cable/alimentación 2) Fusibles domicilio 3) Si persiste, programar reemplazo por probable daño por sobretensión.",
+                        tool: "Agenda TV > Visita técnica para reemplazo de equipo dañado"
+                    },
+                    {
+                        question: "Cliente cambió a paquete premium pero canales nuevos no aparecen después de 24 horas. ¿Qué acción en sistema debes realizar?",
+                        options: [
+                            "Refresh de autorización del decodificador",
+                            "Forzar actualización de guía de canales",
+                            "Reprovisionamiento completo de servicios TV",
+                            "Cualquiera de las anteriores en orden de complejidad"
+                        ],
+                        correct: 3,
+                        explanation: "Probar en orden: 1) Refresh autorización 2) Actualizar guía 3) Reprovisionamiento completo. Generalmente con refresh de autorización se resuelve.",
+                        tool: "Sistema TV > Refresh de autorización y reprovisionamiento"
+                    },
+                    {
+                        question: "Cliente quiere ver contenido en 4K pero dice que no ve diferencia con HD. ¿Qué verificar?",
+                        options: [
+                            "Si su TV es realmente 4K (no solo Smart TV)",
+                            "Si está sintonizando canales 4K específicos (no todos son 4K)",
+                            "Si configuración de resolución en decodificador está en 4K",
+                            "Todas las anteriores"
+                        ],
+                        correct: 3,
+                        explanation: "Para contenido 4K se necesita: 1) TV 4K real 2) Canales 4K específicos 3) Decodificador configurado en resolución 4K.",
+                        tool: "Guías 4K > Verificación de compatibilidad y configuración"
                     }
                 ]
             }
@@ -988,7 +2087,34 @@
 
             // Inicializar funcionalidad del juego
             initGame();
+            
+            // Configurar navegación activa
+            setupNavigation();
         });
+
+        // Configurar navegación activa
+        function setupNavigation() {
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Desplazar a sección si no es modal
+                    if (this.getAttribute('href').startsWith('#')) {
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            e.preventDefault();
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        }
 
         // Función para abrir submodal con contenido específico
         function openSubmodal(submodalId) {
@@ -999,14 +2125,43 @@
             document.getElementById('submodal-title').textContent = data.title;
             
             const content = document.getElementById('submodal-content');
+            let stepsHTML = '';
+            
+            data.steps.forEach((stepObj, index) => {
+                stepsHTML += `
+                    <div class="step">
+                        <span class="step-number">${index + 1}</span>
+                        <strong>${stepObj.step}</strong>
+                        ${stepObj.tool ? `
+                            <div class="tool-simulation" style="margin-top: 0.5rem;">
+                                <h5><i class="fas fa-tools"></i> Herramienta a usar: ${stepObj.tool}</h5>
+                                <button class="btn btn-tool" style="margin-top: 0.5rem; font-size: 0.9rem;" onclick="simulateTool('${stepObj.tool}')">Simular uso de esta herramienta</button>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+            
             content.innerHTML = `
-                <h3>Pasos para la solución:</h3>
-                <ol style="padding-left: 1.5rem; margin-top: 1rem;">
-                    ${data.steps.map((step, index) => `<li style="margin-bottom: 1rem;">${step}</li>`).join('')}
-                </ol>
-                <div style="margin-top: 2rem; padding: 1rem; background-color: #e9ecef; border-radius: var(--border-radius);">
-                    <h4><i class="fas fa-lightbulb"></i> Consejo adicional:</h4>
-                    <p>Recuerda documentar todas las acciones realizadas en el sistema de tickets y ofrecer seguimiento al cliente en caso de requerir visita técnica.</p>
+                <div class="solution-steps">
+                    <h4><i class="fas fa-list-ol"></i> Pasos para la solución:</h4>
+                    ${stepsHTML}
+                </div>
+                
+                ${data.tools ? `
+                <div class="tool-simulation" style="margin-top: 1.5rem;">
+                    <h5><i class="fas fa-toolbox"></i> Herramientas necesarias para este caso:</h5>
+                    <p>${data.tools.join(', ')}</p>
+                    <button class="btn btn-tool" style="margin-top: 0.5rem;" onclick="simulateToolUsage('${submodalId}')">Ver simulación completa de herramientas</button>
+                </div>
+                ` : ''}
+                
+                <div style="margin-top: 2rem; padding: 1rem; background-color: #f8f9fa; border-radius: var(--border-radius);">
+                    <h4><i class="fas fa-clipboard-check"></i> Puntos clave para Teleperformance:</h4>
+                    <p>1. <strong>Siempre documenta</strong> cada paso en el sistema de tickets (CRM).</p>
+                    <p>2. <strong>Ofrece seguimiento</strong> al cliente si el caso requiere visita técnica o tiempo de solución.</p>
+                    <p>3. <strong>Usa las herramientas internas</strong> antes de escalar a visita técnica.</p>
+                    <p>4. <strong>Valida solución</strong> con el cliente antes de cerrar el caso.</p>
                 </div>
             `;
             
@@ -1018,6 +2173,300 @@
             });
             
             submodal.style.display = 'block';
+        }
+
+        // Simular uso de herramienta específica
+        function simulateTool(toolName) {
+            const toolModal = document.getElementById('tool-modal');
+            const toolContent = document.getElementById('tool-modal-content');
+            
+            let simulationHTML = '';
+            
+            // Simulaciones específicas para diferentes herramientas
+            if (toolName.includes('monitoreo') || toolName.includes('outage')) {
+                simulationHTML = `
+                    <h3><i class="fas fa-map-marked-alt"></i> Simulación: Sistema de Monitoreo de Outages</h3>
+                    <p>Acceso: Intranet > Herramientas > Monitoreo Red > Outages</p>
+                    
+                    <div class="image-reference" style="margin: 1.5rem 0;">
+                        <div style="height: 200px; background: linear-gradient(to bottom, #1a1a2e, #16213e); border-radius: 8px; padding: 1rem; color: white;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <h4 style="color: white;">Mapa de Outages MásMóvil</h4>
+                                <span style="background-color: #e20074; padding: 2px 8px; border-radius: 4px;">ACTUALIZADO HOY</span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div style="background-color: #0f3460; padding: 1rem; border-radius: 4px;">
+                                    <h5 style="margin-bottom: 0.5rem;">Madrid Centro</h5>
+                                    <p style="font-size: 0.9rem;">Corte fibra - 150 clientes afectados</p>
+                                    <p style="font-size: 0.8rem; color: #ff9800;">Tiempo estimado: 4 horas</p>
+                                </div>
+                                <div style="background-color: #0f3460; padding: 1rem; border-radius: 4px;">
+                                    <h5 style="margin-bottom: 0.5rem;">Barcelona Sants</h5>
+                                    <p style="font-size: 0.9rem;">Mantenimiento programado</p>
+                                    <p style="font-size: 0.8rem; color: #4caf50;">Resolución: 18:00h</p>
+                                </div>
+                            </div>
+                            <div style="margin-top: 1rem; padding: 0.5rem; background-color: rgba(226, 0, 116, 0.2); border-radius: 4px;">
+                                <p style="font-size: 0.9rem;"><i class="fas fa-info-circle"></i> Para consultar cliente específico: Introducir número de teléfono o dirección</p>
+                            </div>
+                        </div>
+                        <p>Interfaz del sistema de outages de Teleperformance para MásMóvil</p>
+                    </div>
+                    
+                    <h4>Pasos en la simulación:</h4>
+                    <ol style="padding-left: 1.5rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;">Acceder a sistema de monitoreo desde el acceso directo en tu desktop de Teleperformance</li>
+                        <li style="margin-bottom: 0.5rem;">Buscar por dirección del cliente o código postal</li>
+                        <li style="margin-bottom: 0.5rem;">Verificar si hay outages activos en la zona (iconos rojos/naranjas)</li>
+                        <li style="margin-bottom: 0.5rem;">Hacer clic en outage para ver detalles: clientes afectados, causa, tiempo estimado</li>
+                        <li style="margin-bottom: 0.5rem;">Copiar código de outage (ej: OUT-2023-04567) para incluir en ticket CRM</li>
+                        <li>Informar al cliente con datos precisos del outage</li>
+                    </ol>
+                    
+                    <div class="tool-simulation" style="margin-top: 1.5rem;">
+                        <h5><i class="fas fa-clipboard-list"></i> Cómo documentar en CRM:</h5>
+                        <p>1. En ticket, seleccionar categoría "Outage/Incidente masivo"</p>
+                        <p>2. Pegar código de outage en campo "Referencia"</p>
+                        <p>3. Añadir nota: "Cliente informado de outage, tiempo estimado: X horas"</p>
+                        <p>4. Programar seguimiento automático para cuando se resuelva outage</p>
+                    </div>
+                `;
+            } else if (toolName.includes('diagnóstico') || toolName.includes('atenua')) {
+                simulationHTML = `
+                    <h3><i class="fas fa-search"></i> Simulación: Herramienta de Diagnóstico Remoto</h3>
+                    <p>Acceso: Herramientas > Diagnóstico FTTH > Búsqueda por número de línea</p>
+                    
+                    <div class="image-reference" style="margin: 1.5rem 0;">
+                        <div style="height: 250px; background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem;">
+                                <h4 style="color: #333;">Diagnóstico Línea FTTH</h4>
+                                <span style="color: #e20074;">Línea: 123456789</span>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div>
+                                    <h5 style="color: #333; margin-bottom: 0.5rem;">Estado Equipo</h5>
+                                    <div style="background-color: #f8f9fa; padding: 0.5rem; border-radius: 4px; margin-bottom: 0.5rem;">
+                                        <span style="font-size: 0.9rem;">ONT: </span>
+                                        <span style="color: #4caf50; font-weight: bold;">ONLINE</span>
+                                    </div>
+                                    <div style="background-color: #f8f9fa; padding: 0.5rem; border-radius: 4px;">
+                                        <span style="font-size: 0.9rem;">Router: </span>
+                                        <span style="color: #4caf50; font-weight: bold;">CONECTADO</span>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h5 style="color: #333; margin-bottom: 0.5rem;">Señal Óptica</h5>
+                                    <div style="background-color: #f8f9fa; padding: 0.5rem; border-radius: 4px; margin-bottom: 0.5rem;">
+                                        <span style="font-size: 0.9rem;">Atenuación: </span>
+                                        <span style="color: ${toolName.includes('alta') ? '#f44336' : '#4caf50'}; font-weight: bold;">${toolName.includes('alta') ? '-31.5 dB' : '-19.2 dB'}</span>
+                                    </div>
+                                    <div style="background-color: #f8f9fa; padding: 0.5rem; border-radius: 4px;">
+                                        <span style="font-size: 0.9rem;">Estado: </span>
+                                        <span style="color: ${toolName.includes('alta') ? '#f44336' : '#4caf50'}; font-weight: bold;">${toolName.includes('alta') ? 'CRÍTICO' : 'NORMAL'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: #333; margin-bottom: 0.5rem;">Acciones Disponibles</h5>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button style="padding: 0.5rem 1rem; background-color: #e20074; color: white; border: none; border-radius: 4px; font-size: 0.9rem;">Reiniciar ONT</button>
+                                    <button style="padding: 0.5rem 1rem; background-color: #17a2b8; color: white; border: none; border-radius: 4px; font-size: 0.9rem;">Test Velocidad</button>
+                                    <button style="padding: 0.5rem 1rem; background-color: #28a745; color: white; border: none; border-radius: 4px; font-size: 0.9rem;">Refresh Servicio</button>
+                                </div>
+                            </div>
+                        </div>
+                        <p>Interfaz de diagnóstico remoto de Teleperformance para MásMóvil</p>
+                    </div>
+                    
+                    <h4>Interpretación de valores:</h4>
+                    <ul style="padding-left: 1.5rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;"><strong>Atenuación normal:</strong> -8 dB a -27 dB</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Atenuación alta:</strong> -27 dB a -32 dB (posible problema)</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Atenuación crítica:</strong> Mayor a -32 dB (corte probable)</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>ONT ONLINE:</strong> Equipo conectado a red</li>
+                        <li><strong>ONT OFFLINE:</strong> Equipo sin comunicación (corte eléctrico o fibra)</li>
+                    </ul>
+                    
+                    <div class="tool-simulation" style="margin-top: 1.5rem;">
+                        <h5><i class="fas fa-exclamation-triangle"></i> Cuándo programar visita técnica:</h5>
+                        <p>1. Atenuación mayor a -27 dB por más de 24 horas</p>
+                        <p>2. ONT OFFLINE por más de 2 horas (verificar no sea corte eléctrico)</p>
+                        <p>3. Múltiples reinicios remotos sin mejorar señal</p>
+                        <p>4. Cliente reporta intermitencias frecuentes con atenuación variable</p>
+                    </div>
+                `;
+            } else if (toolName.includes('CRM')) {
+                simulationHTML = `
+                    <h3><i class="fas fa-ticket-alt"></i> Simulación: Sistema de Tickets (CRM)</h3>
+                    <p>Acceso: Aplicaciones > CRM MásMóvil > Nuevo Ticket</p>
+                    
+                    <div class="image-reference" style="margin: 1.5rem 0;">
+                        <div style="height: 300px; background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem;">
+                                <h4 style="color: #333;">Nuevo Ticket - MásMóvil</h4>
+                                <span style="color: #e20074;">ID: AUTO-GENERADO</span>
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Cliente:</label>
+                                <input type="text" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;" value="Juan Pérez - Telf: 612345678" disabled>
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Categoría:</label>
+                                <select style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;" disabled>
+                                    <option>FTTH - Sin internet</option>
+                                    <option>FTTH - Internet lento</option>
+                                    <option>FTTH - Problemas WiFi</option>
+                                    <option selected>FTTH - Outage/Incidente masivo</option>
+                                </select>
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Descripción:</label>
+                                <textarea style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; height: 80px;" disabled>Cliente reporta falta de internet. Verificado outage en zona (OUT-2023-04567). Informado tiempo estimado 4 horas. Ofrecido seguimiento.</textarea>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between;">
+                                <button style="padding: 0.5rem 1rem; background-color: #6c757d; color: white; border: none; border-radius: 4px;">Guardar Borrador</button>
+                                <button style="padding: 0.5rem 1rem; background-color: #28a745; color: white; border: none; border-radius: 4px;">Crear Ticket</button>
+                            </div>
+                        </div>
+                        <p>Interfaz de creación de tickets en CRM de Teleperformance para MásMóvil</p>
+                    </div>
+                    
+                    <h4>Mejores prácticas en CRM:</h4>
+                    <ol style="padding-left: 1.5rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;"><strong>Siempre crear ticket</strong> al inicio de la llamada/interacción</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Seleccionar categoría correcta</strong> para métricas internas</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Documentar cada paso</strong> realizado durante la solución</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Incluir códigos de referencia</strong> (outage, visitas, etc.)</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Especificar solución aplicada</strong> o pasos a seguir</li>
+                        <li><strong>No cerrar ticket</strong> hasta confirmar solución con cliente</li>
+                    </ol>
+                    
+                    <div class="tool-simulation" style="margin-top: 1.5rem;">
+                        <h5><i class="fas fa-chart-line"></i> Métricas importantes para Teleperformance:</h5>
+                        <p><strong>Tiempo de resolución:</strong> Menos de 10 minutos para casos simples</p>
+                        <p><strong>Primer contacto solución:</strong> Resolver en primera llamada cuando sea posible</p>
+                        <p><strong>Satisfacción cliente:</strong> Solicitar evaluación al finalizar (sistema automático)</p>
+                        <p><strong>Visitas técnicas evitadas:</strong> Resolver remotamente cuando sea posible</p>
+                    </div>
+                `;
+            } else {
+                // Simulación genérica
+                simulationHTML = `
+                    <h3><i class="fas fa-tools"></i> Simulación: ${toolName}</h3>
+                    <p>Esta es una herramienta interna de Teleperformance para gestión de servicios MásMóvil.</p>
+                    
+                    <div class="tool-simulation" style="margin-top: 1.5rem;">
+                        <h5><i class="fas fa-info-circle"></i> Información de acceso:</h5>
+                        <p><strong>Ruta:</strong> Intranet Teleperformance > Herramientas > ${toolName}</p>
+                        <p><strong>Credenciales:</strong> Usar tu usuario y contraseña de dominio Teleperformance</p>
+                        <p><strong>Disponibilidad:</strong> 24/7 desde cualquier estación de trabajo en el sitio</p>
+                    </div>
+                    
+                    <div class="tool-simulation" style="margin-top: 1.5rem;">
+                        <h5><i class="fas fa-play-circle"></i> Proceso típico de uso:</h5>
+                        <ol style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                            <li style="margin-bottom: 0.5rem;">Acceder a la herramienta desde los favoritos del navegador</li>
+                            <li style="margin-bottom: 0.5rem;">Buscar cliente por número de teléfono, DNI o dirección</li>
+                            <li style="margin-bottom: 0.5rem;">Seleccionar la acción a realizar según el caso</li>
+                            <li style="margin-bottom: 0.5rem;">Confirmar los cambios o acciones con el cliente</li>
+                            <li>Documentar en CRM la acción realizada</li>
+                        </ol>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem; padding: 1rem; background-color: #fff3cd; border-left: 4px solid #ffc107; border-radius: 0 var(--border-radius) var(--border-radius) 0;">
+                        <h5><i class="fas fa-exclamation-triangle"></i> Recordatorio importante:</h5>
+                        <p>Todas las acciones realizadas en herramientas internas quedan registradas en logs de auditoría. Solo realizar acciones autorizadas y necesarias para resolver el caso del cliente.</p>
+                    </div>
+                `;
+            }
+            
+            toolContent.innerHTML = simulationHTML;
+            
+            // Cerrar otros modales y abrir este
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (modal.id !== 'tool-modal') {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            toolModal.style.display = 'block';
+        }
+
+        // Simulación completa de uso de herramientas para un caso
+        function simulateToolUsage(problemId) {
+            const data = solutionData[problemId];
+            if (!data) return;
+            
+            const toolModal = document.getElementById('tool-modal');
+            const toolContent = document.getElementById('tool-modal-content');
+            
+            let toolsHTML = '';
+            if (data.tools && data.tools.length > 0) {
+                toolsHTML = `
+                    <h4>Herramientas a utilizar en orden:</h4>
+                    <ol style="padding-left: 1.5rem; margin-top: 1rem;">
+                        ${data.tools.map(tool => `<li style="margin-bottom: 0.5rem;"><strong>${tool}</strong></li>`).join('')}
+                    </ol>
+                `;
+            }
+            
+            toolContent.innerHTML = `
+                <h3><i class="fas fa-toolbox"></i> Simulación Completa: Uso de Herramientas para "${data.title}"</h3>
+                
+                ${toolsHTML}
+                
+                <div class="tool-simulation" style="margin-top: 1.5rem;">
+                    <h5><i class="fas fa-sitemap"></i> Flujo de trabajo recomendado:</h5>
+                    <ol style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                        <li style="margin-bottom: 0.5rem;"><strong>Paso 1:</strong> Crear ticket en CRM al inicio de la interacción</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Paso 2:</strong> Usar herramientas de diagnóstico según el problema</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Paso 3:</strong> Documentar hallazgos en el ticket CRM</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Paso 4:</strong> Aplicar solución usando herramientas correspondientes</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Paso 5:</strong> Verificar solución con cliente</li>
+                        <li><strong>Paso 6:</strong> Cerrar ticket con resolución apropiada</li>
+                    </ol>
+                </div>
+                
+                <div style="margin-top: 1.5rem; padding: 1rem; background-color: #e7f3ff; border-radius: var(--border-radius);">
+                    <h5><i class="fas fa-user-tie"></i> Para agentes de Teleperformance:</h5>
+                    <p><strong>Tiempo objetivo de resolución:</strong> 5-15 minutos para casos estándar</p>
+                    <p><strong>Escalación apropiada:</strong> Si no se resuelve en 15 minutos, escalar a nivel 2</p>
+                    <p><strong>Documentación obligatoria:</strong> Todas las acciones deben quedar registradas en CRM</p>
+                    <p><strong>Seguimiento:</strong> Para casos con visita técnica, programar seguimiento automático</p>
+                </div>
+                
+                <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <button class="btn" onclick="simulateTool('${data.tools && data.tools[0] ? data.tools[0] : 'CRM'}')">
+                        <i class="fas fa-play"></i> Simular primera herramienta
+                    </button>
+                    <button class="btn btn-tool" onclick="closeAllModals()">
+                        <i class="fas fa-times"></i> Cerrar simulación
+                    </button>
+                </div>
+            `;
+            
+            // Cerrar otros modales y abrir este
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (modal.id !== 'tool-modal') {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            toolModal.style.display = 'block';
+        }
+
+        // Cerrar todos los modales
+        function closeAllModals() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
         }
 
         // Funcionalidad del juego
@@ -1067,6 +2516,9 @@
             // Actualizar texto de pregunta
             document.getElementById('question-text').textContent = question.question;
             document.getElementById('question-progress').textContent = `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`;
+            
+            // Ocultar explicación previa
+            document.getElementById('question-explanation').style.display = 'none';
 
             // Actualizar opciones
             const optionsContainer = document.getElementById('options-container');
@@ -1090,6 +2542,12 @@
                     // Seleccionar esta opción
                     optionElement.classList.add('selected');
                     userAnswers[currentQuestionIndex] = index;
+                    
+                    // Mostrar explicación
+                    if (question.explanation) {
+                        document.getElementById('explanation-text').textContent = question.explanation;
+                        document.getElementById('question-explanation').style.display = 'block';
+                    }
 
                     // Habilitar botón siguiente si hay respuesta seleccionada
                     document.getElementById('next-question').disabled = false;
@@ -1155,23 +2613,33 @@
             // Mensaje según puntaje
             let message = "";
             let feedback = "";
+            let toolFeedback = "";
             
             if (score >= 90) {
                 message = "¡Excelente! Dominas completamente esta categoría.";
-                feedback = "Tu conocimiento es excepcional. Puedes manejar cualquier caso complejo que se presente.";
+                feedback = "Tu conocimiento es excepcional. Puedes manejar cualquier caso complejo que se presente en esta área.";
+                toolFeedback = "Dominas tanto los conceptos técnicos como el uso de herramientas internas. Continúa aplicando este conocimiento en cada interacción con clientes.";
+            } else if (score >= 80) {
+                message = "¡Muy bien! Tienes excelente conocimiento del área.";
+                feedback = "Puedes resolver la mayoría de casos de forma independiente. Revisa los temas donde tuviste errores para perfeccionar tu desempeño.";
+                toolFeedback = "Tienes buen manejo de herramientas internas. Asegúrate de documentar siempre en CRM y usar todas las herramientas de diagnóstico antes de escalar casos.";
             } else if (score >= 70) {
-                message = "¡Muy bien! Tienes buen conocimiento del área.";
-                feedback = "Puedes resolver la mayoría de casos, pero revisa los temas donde tuviste errores.";
+                message = "Buen trabajo. Tienes buen conocimiento base.";
+                feedback = "Puedes resolver casos comunes sin problemas. Te recomendamos estudiar los temas donde tuviste dificultades para mejorar tu eficiencia.";
+                toolFeedback = "Recuerda utilizar todas las herramientas de diagnóstico disponibles antes de tomar decisiones. La herramienta de diagnóstico remoto es especialmente útil para FTTH.";
             } else if (score >= 60) {
                 message = "Aprobado. Conocimiento suficiente para casos básicos.";
-                feedback = "Te recomendamos repasar los temas donde fallaste para mejorar tu desempeño.";
+                feedback = "Puedes manejar casos sencillos pero necesitas apoyo en situaciones más complejas. Revisa las guías de solución detalladas.";
+                toolFeedback = "Necesitas practicar más el uso de herramientas internas. Asegúrate de familiarizarte con el sistema de diagnóstico y CRM para mejorar tu eficiencia.";
             } else {
                 message = "Necesitas reforzar tus conocimientos.";
-                feedback = "Revisa las guías de solución y realiza más prácticas antes de atender casos reales.";
+                feedback = "Te recomendamos estudiar las guías de solución antes de atender casos reales. Pide ayuda a tu supervisor cuando tengas dudas.";
+                toolFeedback = "Es fundamental que domines las herramientas internas antes de atender clientes. Solicita capacitación adicional en el uso de CRM y herramientas de diagnóstico.";
             }
 
             document.getElementById('result-message').textContent = message;
             document.getElementById('performance-feedback').textContent = feedback;
+            document.getElementById('tool-feedback-text').textContent = toolFeedback;
         }
 
         function resetGame() {
@@ -1189,6 +2657,33 @@
             currentQuestionIndex = 0;
             userAnswers = [];
         }
+
+        // Abrir simulación de herramienta desde botones
+        window.openToolSimulation = function(toolType) {
+            let toolName = "";
+            let toolDetails = "";
+            
+            switch(toolType) {
+                case 'crm':
+                    toolName = "Sistema de Gestión de Tickets (CRM)";
+                    toolDetails = "Sistema central para registro, seguimiento y resolución de casos de clientes.";
+                    break;
+                case 'monitoreo':
+                    toolName = "Monitoreo de Red y Outages";
+                    toolDetails = "Herramienta para verificar estado de la red, cortes generales y tiempos de solución estimados.";
+                    break;
+                case 'diagnostico':
+                    toolName = "Diagnóstico Remoto de Equipos";
+                    toolDetails = "Sistema para verificar estado de ONT/routers, atenuación de señal, reinicios remotos, etc.";
+                    break;
+                case 'agenda':
+                    toolName = "Agenda de Visitas Técnicas";
+                    toolDetails = "Plataforma para programar, gestionar y seguir visitas técnicas a domicilio.";
+                    break;
+            }
+            
+            simulateTool(toolName);
+        };
     </script>
 </body>
 </html>
